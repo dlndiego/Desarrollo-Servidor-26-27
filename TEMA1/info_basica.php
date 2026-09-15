@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-...
+    <link rel="stylesheet" href="info_basica.css">
 </head>
 <body>
 <h1>Página de prueba en PHP</h1>
@@ -10,5 +10,5 @@
 $nombre = "Diego De Leon";
 $anyo = 2007;
 ?>
-<p>El autor de esta página es <?php echo $nombre; ?> y está
-realizada en el año <?php echo $anyo; ?>.</p>
+<p>El autor de esta página es <span><?php echo $nombre; ?></span> y está
+realizada en el año <span><?php echo $anyo; ?></span>.</p>
