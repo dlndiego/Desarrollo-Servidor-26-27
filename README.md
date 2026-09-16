@@ -20,3 +20,39 @@ estudios y otro con los idiomas que hablas), tanto en español,valencià como en
 idioma que elijas.
 
 ![alt text](/TEMA1/img/curriculum.png)
+
+#### `area_circular.php`
+
+ Crea una página en la carpeta de ejercicios llamada area_circulo.php. En
+ella, crea una variable $radio y ponle el valor 3.5. Según esa variable, calcula en otra
+variable el área del círculo (PI * 𝑟𝑎𝑑𝑖𝑜2
+), deberás definir la constante PI, y muestra por
+pantalla el texto “El área del círculo es XX.XX”, donde XX.XX será el resultado de calcular el área.
+
+``falta imagen``
+
+`prediccion.php`
+
+Intenta predecir qué resultado va a sacar por pantalla cada instrucción echo
+de este código PHP. Luego podrás comprobar si estabas en lo cierto poniendo el código
+en una página y probándolo en un navegador
+
+- Codido a predecir: 
+```php
+<?php
+$num1 = 3;
+$num2 = 5;
+$num3 = 8;
+$num1 *= 4;
+echo $num1;//12
+echo $num1 <= $num2;//false
+echo $num3 > $num1 and $num3 > $num2;//false
+echo $num3 > $num1 or $num3 > $num2;//true
+echo $num1 > $num2 xor $num1 > $num3;//false, XOR = true + true = false
+$num3--;//7
+echo $num3;//7
+$num3 += $num1;//19
+echo $num3;//19
+?>
+```
+!Falta imagen de la paguina!
