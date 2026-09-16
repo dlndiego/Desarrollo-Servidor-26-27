@@ -31,7 +31,7 @@ pantalla el texto “El área del círculo es XX.XX”, donde XX.XX será el res
 
 ![alt text](/TEMA1/img/areaCirculo.png)
 
-`prediccion.php`
+#### `prediccion.php`
 
 Intenta predecir qué resultado va a sacar por pantalla cada instrucción echo
 de este código PHP. Luego podrás comprobar si estabas en lo cierto poniendo el código
@@ -55,4 +55,15 @@ $num3 += $num1;//19
 echo $num3;//19
 ?>
 ```
-!Falta imagen de la paguina!
+
+Paguina web: 
+
+![alt text](/TEMA1/img/prediccion.png)
+
+#### `prueba_if.php`
+Crea una página llamada prueba_if.php en la carpeta de ejercicios del tema. Crea en
+ella dos variables llamadas $nota1 y $nota2, y dales el valor de dos notas de examen
+cualesquiera (con decimales si quieres). Después, utiliza expresiones if..else para determinar qué nota es la mayor de las dos.
+
+![alt text](/TEMA1/img/prueba_if.png)
+

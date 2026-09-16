@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-   <link rel="stylesheet" href="curriculum.css">
+  <link rel="stylesheet" href="css/info_basica.css">
 </head>
 <body>
     <h1>CURRICULUM</h1>

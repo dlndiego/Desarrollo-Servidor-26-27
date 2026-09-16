@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="stylesheet" href="area_circular.css">
+   <link rel="stylesheet" href="css/info_basica.css">
 </head>
 <body>
     <?php 

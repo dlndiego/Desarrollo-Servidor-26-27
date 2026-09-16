@@ -3,6 +3,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    background-color: rgb(136, 189, 238);
 }
 h1{
     background-color: rgb(136, 136, 223);
