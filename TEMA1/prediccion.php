@@ -12,7 +12,8 @@
         echo $num1 . " ";//12
         echo $num1 <= $num2;//false
         echo $num3 > $num1 and $num3 > $num2;//false
-        echo $num3 > $num1 or $num3 > $num2;//true
+        echo $num3 > $num1 or $num3 > $num2;
+        echo " ";//true
         echo $num1 > $num2 xor $num1 > $num3;//false, XOR = true + true = false
         $num3--;//7
         echo $num3." ";//7
