@@ -10,6 +10,6 @@
         $area = PI * (($radio)*2);
     ?>
     <h1>Area del Circulo.</h1>
-    <p>El area del Circulo es <span><?php echo ${$area} ?></span></p>
+    <p>El area del Circulo es <span><?php echo ($area) ?></span></p>
 </body>
 </html>

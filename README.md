@@ -29,7 +29,7 @@ variable el área del círculo (PI * 𝑟𝑎𝑑𝑖𝑜2
 ), deberás definir la constante PI, y muestra por
 pantalla el texto “El área del círculo es XX.XX”, donde XX.XX será el resultado de calcular el área.
 
-``falta imagen``
+![alt text](/TEMA1/img/areaCirculo.png)
 
 `prediccion.php`
 
