@@ -4,6 +4,8 @@ body{
     align-items: center;
     justify-content: space-between;
     background-color: rgb(136, 189, 238);
+    margin: 5px;
+    padding: 10px;
 }
 h1{
     background-color: rgb(136, 136, 223);
@@ -19,7 +21,7 @@ span{
     font-family: 'Times New Roman', Times, serif;
     background-color: rgb(182, 180, 180);
     border: 2px,solid,black;
-    margin: 2px;
+    margin: 5px;
     padding: 2px;
 
 }
