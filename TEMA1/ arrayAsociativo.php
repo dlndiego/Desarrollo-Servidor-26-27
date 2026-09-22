@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> arrayAsociativo.php</title>
+    <link rel="stylesheet" href="css/info_basica.css">
 </head>
 <body>
     <h1>arrayAsociativo.php</h1>
@@ -12,6 +13,8 @@
         “M”, …]). Una vez completado, vuelve a recorrerlo y calcula cuantos elementos hay de cada uno de los valores almacenando el resultado en un array asociativo [‘M’ => 44, ‘F’ => 66] (no utilices variables
         para contar las M o las F). Finalmente, muestra el resultado por pantalla
     </p>
+
+
 
     <span>
         <?php
@@ -31,12 +34,16 @@
             $mYf=["M" => 0,"F" => 0];
             
             for ($i = 0; $i <= count($vectAlea); $i++){
-                $totalM = array_filter($vectAlea[$i],'hayM');
-                $totalF = array_filter($vectAlea[$i],'hayF');
+                $totalM = array_filter($vectAlea,'hayM');
+                $totalF = array_filter($vectAlea,'hayF');
             }
 
             $mYf["M"]=count($totalM);
             $mYf["F"]=count($totalF);
+
+            echo("CANTIDAD DE M:". $mYf["M"] . "<br>");
+            echo("CANTIDAD DE F:" . $mYf["F"] . "\n");
+
             #Funcion que nos dice si es una M o no.
             function hayM($letra){
                 if($letra == "M"){
