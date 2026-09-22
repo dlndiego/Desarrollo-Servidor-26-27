@@ -123,3 +123,17 @@ Rellena un array bidimensional de 6 filas por 9 columnas con números aleatorios
 
 ![](TEMA1/img/arrayBidimensional.png)
 
+#### ` contador.php`
+
+Crea una página llamada contador.php. Crea una función llamada cuenta($a, $b
+) que reciba dos parámetros y vaya contando de un número al otro, separando los
+números por comas. Después, pruébala en el código PHP haciendo que cuente del 10
+al 20.
+
+![](/TEMA1/img/contadorFnciones.png)
+
+#### `intercambia.php`
+
+Crea una página llamada intercambia.php. Añade dentro una función llamada intercambia que reciba 2 parámetros numéricos por referencia, y lo que haga sea intercambiar sus valores. Es decir, si recibe el parámetro $a y el valor de $b , y $b tome el valor de $a
+
+![](/TEMA1/img/intercambia.png)
