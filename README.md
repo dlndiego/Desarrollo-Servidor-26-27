@@ -91,3 +91,5 @@ Al final debe quedarte algo como esto:
 
 Rellena un array con 50 números aleatorios comprendidos entre el 0 y el 99, y luego muéstralo en una lista desordenada. Para crear un número aleatorio, utiliza la función rand(inicio, fin) => $num = rand (0, 99).
 ![alt text](/TEMA1/img/ARRAY1.png)
+
+#### `arrayAsociativo.php`
