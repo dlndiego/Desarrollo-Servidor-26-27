@@ -137,3 +137,17 @@ al 20.
 Crea una página llamada intercambia.php. Añade dentro una función llamada intercambia que reciba 2 parámetros numéricos por referencia, y lo que haga sea intercambiar sus valores. Es decir, si recibe el parámetro $a y el valor de $b , y $b tome el valor de $a
 
 ![](/TEMA1/img/intercambia.png)
+
+#### `parametrosVariables.php`
+Crea las siguientes funciones: Una función que devuelva el mayor de todos los números recibidos como parámetro variables: function mayor(): int. Utiliza las funciones func_get_args(), etc… No puedes usar la función max().
+
+![](/TEMA1/img/parametrosVariables.png)
+
+#### `comprueba_hora.php`
+
+Crea una variable de texto con una hora en ella (por ejemplo, “21:30:12”), y luego procésala
+para extraer por separado la hora, el minuto y el segundo, y comprobar si es una hora válida.
+Por ejemplo, la hora anterior sí debería ser válida, pero si ponemos “12:63:11” no debería serlo,
+porque 63 no es un minuto válido.
+
+![](TEMA1/img/compruebaHora.png)
