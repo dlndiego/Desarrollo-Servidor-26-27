@@ -202,3 +202,10 @@ A partir de una frase con palabras sólo separadas por espacios, devolver:
 
 Nota: no se puede usar str_word_count
 
+![alt text](TEMA1/img/analizador.png)
+
+#### `cani.php`
+
+EsCrIbE uNa FuNcIóN qUe TrAnSfOrMe UnA cAdEnA eN cAnI.
+
+![alt text](/TEMA1/img/cani.png)
