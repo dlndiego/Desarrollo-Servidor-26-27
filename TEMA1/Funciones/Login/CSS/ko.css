@@ -1,0 +1,43 @@
+/* Configuración del fondo de la página */
+body {
+    background-color: #0f172a; /* Fondo oscuro azulado elegante */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* El recuadro DIV estilo tarjeta */
+div {
+    background-color: #ffffff;
+    padding: 32px 40px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    
+    /* Borde fino sutil */
+    border: 1px solid #e2e8f0;
+    
+    /* Sombra elegante y profesional */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 
+                0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+/* Título H2 */
+h2 {
+    color: #0c0c0c; /* Rojo elegante, no chillón */
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+/* Texto de descripción P */
+p {
+    color: #475569; /* Gris suave legible */
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+}
