@@ -166,3 +166,39 @@ $cant dígitos.
 ![](TEMA1/img/matematicas.png)
 
 #### `login.php`
+
+Vamos a simular un formulario de acceso:
+login.php: el formulario de entrada, que solicita el usuario y contraseña. compruebaLogin
+.php: recibe los datos y comprueba si son correctos (los usuarios se guardan en un array asociativo) pasando el control mediante el uso de include a:
+ok.php: El usuario introducido es correcto
+ko.php: El usuario es incorrecto. Informar si ambos están mal o solo la contraseña. Volver a
+mostrar el formulario de acceso.
+
+>**login.php**
+>
+>![alt text](TEMA1/img/login.png)
+>
+>**ok.php**
+>
+> ![alt text](/TEMA1/img/ok.png)
+>
+>**ko.php**
+>
+>![alt text](TEMA1/img/ko.png) 
+
+#### `fraseImpares.php`
+
+Lee una frase y devuelve una nueva con solo los caracteres de las posiciones impares.
+
+![](TEMA1/img/fraseImpares.png)
+
+#### `analizador.php`
+
+A partir de una frase con palabras sólo separadas por espacios, devolver:
+
+• Letras totales y cantidad de palabras
+
+• Una línea por cada palabra indicando su tamaño
+
+Nota: no se puede usar str_word_count
+
