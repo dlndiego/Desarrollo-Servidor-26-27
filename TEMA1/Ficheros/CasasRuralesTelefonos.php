@@ -39,19 +39,22 @@
             echo"</tr>";
             for($i= 1;$i<count($fichero);$i++){
                 $linea = explode(";",$fichero[$i]);
-                $lineaSinVacios = array_filter($linea);
                 echo"<tr>";
-                for($j= 0;$j<count($linea);$j++){
-                    if (trim($linea[9]) !== '') {
+                if($linea[9] !== '') {
+                    for($j= 0;$j<count($linea);$j++){
                         if ($j == 0 or $j == 1 or $j ==3 or $j == 9) {
                             echo "<td class='PHP'>$linea[$j]</td>";
                         }
-                    }else{
-                        $casaRularesDescartadas++;                    
-                    }    
-                }
-                echo"</tr>"; 
+                    }
+                }else{
+                    $casaRularesDescartadas++;                    
+                }    
             }
+           
+        }else{
+            echo "NO EXISTE";
+        }   
+            echo"</tr>"; 
             echo "</table>";
             echo "<table>";
             echo "<tr>";
@@ -61,12 +64,6 @@
             echo "<td class='PHP'> $casaRularesDescartadas </td>";
             echo "</tr>";
             echo "</table>";
-            }else{
-            echo "NO EXISTE";
-        }
-        
-
-        
     }
 
 

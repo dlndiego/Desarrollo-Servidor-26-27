@@ -230,3 +230,12 @@ han descartado por tener datos nulos.
 Y ahora te enseñare las **casas rulales** omitidas: 
 
 ![](TEMA1/img/casasDescartadas.png)
+
+#### `plantillas.php`
+
+Con el fichero plantillas.csv muestra en un tabla HTML la plantilla del Atlético de Madrid
+ordenada por dorsal.
+
+![alt text](TEMA1/img/plantilla.png)
+
+>[]
