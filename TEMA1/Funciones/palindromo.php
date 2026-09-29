@@ -34,6 +34,12 @@ igual de izquierda a derecha que de derecha a izquierda, por ejemplo, "ligar es 
     ?>
 
 </div>
+<div>
+    <ul>
+        <li>1 = TRUE</li>
+        <LI>0 = FALSE</LI>
+    </ul>
+</div>
 </body>
 </html>
 <?php 

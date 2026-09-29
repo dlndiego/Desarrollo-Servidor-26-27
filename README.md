@@ -209,3 +209,24 @@ Nota: no se puede usar str_word_count
 EsCrIbE uNa FuNcIóN qUe TrAnSfOrMe UnA cAdEnA eN cAnI.
 
 ![alt text](/TEMA1/img/cani.png)
+
+#### `palindromo.php``
+
+Escribe una función que devuelva un booleano indicando si una palabra es palíndroma (se lee igual de izquierda a derecha que de derecha a izquierda, por ejemplo, "ligar es ser agil").
+
+![](TEMA1/img/palindromo.png)
+
+#### `CasasRuralesTelefonos.php`
+
+Crea un programa llamado CasasRuralesTelefonos.php que cargue los datos de este
+archivo CSV de casas rurales de la provincia de Castellón.
+Queremos quedarnos con el id, localidad, nombre y telefono de las casas rurales que tengan un
+teléfono definido, descartando el resto.
+El programa debe mostrar por pantalla el listado final procesado, y cuántas casas rurales se
+han descartado por tener datos nulos.
+
+![](TEMA1/img/casasRurales.png)
+
+Y ahora te enseñare las **casas rulales** omitidas: 
+
+![](TEMA1/img/casasDescartadas.png)
