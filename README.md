@@ -238,4 +238,5 @@ ordenada por dorsal.
 
 ![alt text](TEMA1/img/plantilla.png)
 
->[]
+>[!danger] Repasar
+> Los ejercicios de **ficheros** hay que repasarlos ya que pueden ser liosos, **(pendiende de repaso)**.
