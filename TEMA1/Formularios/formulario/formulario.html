@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+
+<body>
+    <section>
+        <header>
+            <h1>formulario.html</h1>
+        </header>
+        <main>
+            <p>
+                Crea un formulario(utiliza bootstrap) que solicite:
+                • Nombre y apellidos.
+                • Email.
+                • URL página personal.
+                • Sexo (radio).
+                • Número de convivientes en el domicilio.
+                • Aficiones (checkboxes) => poner mínimo 4 valores.
+                • Menú favorito (lista selección múltiple) => poner mínimo 4 valores.
+                • Muestra los valores cargados en una tabla-resumen.
+            </p>
+        </main>
+
+        <article class="form1">
+            <div>
+                <form method="post" action="formulario.php">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Nombre completo</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            name="nomCompl">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleInputPassword1" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Pagina</label>
+                        <input type="url" class="form-control" id="exampleInputPassword1" name="url">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioDefault1" id="radioDefault1" value="Hombre">
+                        <label class="form-check-label" for="radioDefault1">Hombre</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioDefault1" id="radioDefault2" checked value="Mujer">
+                        <label class="form-check-label" for="radioDefault2">Mujer</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Numero de convivientes</label>
+                        <input type="number" class="form-control" id="exampleInputPassword1" name="number">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Musica" id="checkDefault" name="check[]">
+                        <label class="form-check-label" for="checkDefault">
+                            Musica
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Programar" id="checkChecked" checked name="check[]">
+                        <label class="form-check-label" for="checkChecked">
+                            Programar
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Deporte" id="checkDefault" name="check[]">
+                        <label class="form-check-label" for="checkDefault">
+                            Deporte
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Leer" id="checkChecked" checked name="check[]">
+                        <label class="form-check-label" for="checkChecked">
+                            Leer
+                        </label>
+                    </div>
+                    <select class="form-select" aria-label="Default select example" name="eleccion">
+                        <option selected >Abre este menu...</option>
+                        <option value="PYTHON">PYTHON</option>
+                        <option value="JAVA">JAVA</option>
+                        <option value="C++">C++</option>
+                    </select>
+                    <BR>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </article>
+
+    </section>
+
+
+
+</body>
+
+</html>

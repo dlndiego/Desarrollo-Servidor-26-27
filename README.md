@@ -262,3 +262,20 @@ Muestra por pantalla:
 
 #### `formulario.html y formulario.php`
 
+Crea un formulario(utiliza bootstrap) que solicite:
+• Nombre y apellidos.
+• Email.
+• URL página personal.
+• Sexo (radio).
+• Número de convivientes en el domicilio.
+• Aficiones (checkboxes) => poner mínimo 4 valores.
+• Menú favorito (lista selección múltiple) => poner mínimo 4 valores.
+• Muestra los valores cargados en una tabla-resumen.
+
+>[!note]
+>
+> `1. `**`formulario.html`**
+>![](TEMA1/img/formulario.png)
+>
+> `2. ` **`formulario.php`**
+>![](TEMA1/img/datos_form.png)
