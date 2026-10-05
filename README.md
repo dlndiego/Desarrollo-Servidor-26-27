@@ -253,6 +253,12 @@ Muestra por pantalla:
 • ¿Qué es la ruta del sitio web en el ordenador local ?
 • Utilitza una vista para mostrar el resultado. calculadora.view.php
 
->[!check] PAGINA DEL FORMULARIO 
-> ![](TEMA1/img/casasRurales.png)
+>[!NOTE] 
+> 
+> `1. `**`PAGINA DEL FORMULARIO`** 
+> ![](TEMA1/img/calculadora.png)
+> `2. `**`PAGINA DEL RESULTADO`**
+> ![](TEMA1/img/calculadora_vista.png)
+
+#### `formulario.html y formulario.php`
 
