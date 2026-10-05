@@ -240,3 +240,19 @@ ordenada por dorsal.
 
 >[!danger] 
 > Repasar los ejercicios de **ficheros** hay que repasarlos ya que pueden ser liosos, **(pendiende de repaso)**.
+
+#### `calculadora.php`
+
+Escribe un programa calculadora.php que acepte por la dirección las variables $x y $y y que:
+Muestra por pantalla:
+• El valor del array $_GET (utiliza la función print_r())
+• La suma, resto, multiplicación y división de x e y.
+• El valores de la variable $_SERVER.
+• ¿Cual es el ordenador que hace la petición?
+• En qué variable están los parámetros de la petición.
+• ¿Qué es la ruta del sitio web en el ordenador local ?
+• Utilitza una vista para mostrar el resultado. calculadora.view.php
+
+>[!check] PAGINA DEL FORMULARIO 
+> ![](TEMA1/img/casasRurales.png)
+
