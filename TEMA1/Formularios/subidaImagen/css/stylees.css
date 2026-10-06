@@ -1,0 +1,167 @@
+/* ==========================================================================
+   Variables de Color y Configuración Base
+   ========================================================================== */
+:root {
+  --bg-color: #f1f5f9;
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-muted: #475569;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --border: #e2e8f0;
+  --header-bg: #1e293b;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Fira Code", Consolas, Monaco, "Courier New", monospace;
+}
+
+/* Modo oscuro automático según las preferencias del sistema */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --accent-light: rgba(59, 130, 246, 0.1);
+    --border: #334155;
+    --header-bg: #0f172a;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding: 2rem 1rem;
+}
+
+body > section {
+max-width: 900px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+/* Header del documento */
+header {
+background-color: var(--header-bg);
+color: #ffffff;
+padding: 1.5rem 2rem;
+border-radius: var(--radius);
+box-shadow: var(--shadow-lg);
+text-align: center;
+}
+
+header h1 {
+font-size: 2rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+}
+
+/* Estilos de Main y Articles (Efecto Tarjeta) */
+main, article {
+background-color: var(--card-bg);
+padding: 1.5rem 2rem;
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+border: 1px solid var(--border);
+}
+
+h2, h3 {
+color: var(--text-primary);
+margin-bottom: 1rem;
+font-size: 1.25rem;
+display: flex;
+align-items: center;
+}
+
+h2::before, h3::before {
+content: "";
+display: inline-block;
+width: 4px;
+height: 1.25rem;
+background-color: var(--accent);
+margin-right: 0.75rem;
+border-radius: 2px;
+}
+
+p {
+color: var(--text-muted);
+margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+Tablas (Soporte para .datos, $_SERVER y Operaciones)
+========================================================================== */
+table {
+width: 100%;
+border-collapse: separate;
+border-spacing: 0;
+margin: 1rem 0;
+border-radius: calc(var(--radius) - 4px);
+overflow: hidden;
+border: 1px solid var(--border);
+}
+
+th, td {
+padding: 0.75rem 1rem;
+text-align: left;
+border-bottom: 1px solid var(--border);
+}
+
+th {
+background-color: var(--accent-light);
+color: var(--accent);
+font-weight: 600;
+font-size: 0.875rem;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+}
+
+tr:last-child td {
+border-bottom: none;
+}
+
+tr:hover td {
+background-color: rgba(37, 99, 235, 0.03);
+}
+
+/* Estilo específico para las celdas con class="datos" */
+td.datos {
+font-family: var(--font-mono);
+font-weight: 600;
+color: var(--accent);
+text-align: center;
+}
+
+/* Estilo para la tabla de $_SERVER (article.server) con scroll por si es muy larga */
+article.server {
+max-height: 500px;
+overflow-y: auto;
+}
+
+article.server td:first-child {
+font-family: var(--font-mono);
+font-size: 0.85rem;
+color: var(--text-primary);
+word-break: break-all;
+}
+
+article.server td:last-child {
+font-family: var(--font-mono);
+font-size: 0.85rem;
+color: var(--text-muted);
+word-break: break-all;
+}
