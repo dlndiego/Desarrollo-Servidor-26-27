@@ -279,3 +279,28 @@ Crea un formulario(utiliza bootstrap) que solicite:
 >
 > `2. ` **`formulario.php`**
 >![](TEMA1/img/datos_form.png)
+
+#### `subidaImagen.php`
+
+Crea un formulario que permita subir unicamente imágenes (comprueba la propiedad type del
+archivo subido).
+
+![](TEMA1/img/subidaImagen.png)
+
+Si el usuario selecciona otro tipo de archivos, se le debe informar del error y permitir que suba un nuevo archivo.
+
+![](TEMA1/img/errorImagen.png)
+
+>[!NOTE]
+>
+>Este mensaje aparece **5 segundos** luego se redirige a la pagina principal.
+
+En el caso de subir el tipo correcto, visualizar la imagen durante 5 segundos,con la ruta y nombre, tamaño de anchura y altura y redirecciona al formulario.
+
+![](TEMA1/img/muestraFoto5seg.png)
+
+También hay que crear un enlace
+para mostrar el listado de todas las imagenes subidas.(analiza/estudia el método scandir()).
+
+![](TEMA1/img/paginaDeImagenes.png)
+

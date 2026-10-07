@@ -18,6 +18,11 @@
             </h1>
         </header>
         <main>
+            <form method="post" action="vista.php">
+                <div class="mb-3" >
+                    <button type="submit"  class="btn btn-primary" >Ver todas las imagenes</button> 
+                </div>
+            </form>
             <p>
                 Crea un formulario que permita subir unicamente imágenes (comprueba la propiedad type del
                 archivo subido). Si el usuario selecciona otro tipo de archivos, se le debe informar del error y

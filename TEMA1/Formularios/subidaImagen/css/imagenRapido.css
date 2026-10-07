@@ -1,0 +1,189 @@
+:root {
+    --fondo: #eceff5;
+    --superficie: #ffffff;
+    --texto: #1b2033;
+    --texto-suave: #5d6580;
+    --linea: #dde1ec;
+    --acento: #3a4fe0;
+    --acento-fondo: #e6e9fc;
+    --sombra: 0 1px 2px rgba(27, 32, 51, .06), 0 16px 40px rgba(27, 32, 51, .10);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fondo: #12141d;
+        --superficie: #1b1e2b;
+        --texto: #eef0f8;
+        --texto-suave: #9aa1bb;
+        --linea: #2c3042;
+        --acento: #8d9bff;
+        --acento-fondo: #262b4a;
+        --sombra: 0 1px 2px rgba(0, 0, 0, .4), 0 16px 40px rgba(0, 0, 0, .35);
+    }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.5;
+}
+
+.tarjeta {
+    width: min(100%, 480px);
+    background: var(--superficie);
+    border: 1px solid var(--linea);
+    border-radius: 20px;
+    box-shadow: var(--sombra);
+    overflow: hidden;
+}
+
+.titulo {
+    margin: 0;
+    padding: 24px 28px 4px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+}
+
+.aviso {
+    margin: 0;
+    padding: 4px 28px 28px;
+    color: var(--texto-suave);
+}
+
+/* Imagen */
+.marco {
+    margin: 20px 28px 0;
+    padding: 12px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background:
+        repeating-conic-gradient(var(--acento-fondo) 0% 25%, transparent 0% 50%)
+        50% / 20px 20px;
+    border: 1px solid var(--linea);
+}
+
+.marco img {
+    display: block;
+    max-width: 100%;
+    max-height: 340px;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
+}
+
+/* Tabla de datos */
+.tabla {
+    width: calc(100% - 56px);
+    margin: 20px 28px 24px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--linea);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: .95rem;
+}
+
+.tabla caption {
+    caption-side: top;
+    text-align: left;
+    padding: 0 0 8px;
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--texto-suave);
+}
+
+.tabla th,
+.tabla td {
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--linea);
+}
+
+.tabla tr:last-child th,
+.tabla tr:last-child td { border-bottom: 0; }
+
+.tabla th {
+    width: 110px;
+    font-weight: 500;
+    color: var(--texto-suave);
+    background: var(--acento-fondo);
+}
+
+.tabla td {
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.tabla code {
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: .88rem;
+    font-weight: 400;
+}
+
+/* Pie con cuenta atrás */
+.pie {
+    padding: 0 28px 24px;
+}
+
+.pie p {
+    margin: 12px 0 0;
+    font-size: .9rem;
+    color: var(--texto-suave);
+}
+
+.pie a {
+    color: var(--acento);
+    font-weight: 500;
+    text-underline-offset: 3px;
+}
+
+.pie a:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.barra {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--acento-fondo);
+    overflow: hidden;
+}
+
+.barra span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: var(--acento);
+    border-radius: inherit;
+    transform-origin: left;
+    animation: cuentaAtras 5s linear forwards;
+}
+
+@keyframes cuentaAtras {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .barra span { animation: none; }
+}
+
+@media (max-width: 420px) {
+    .tabla { width: calc(100% - 40px); }
+    .tabla th { width: 80px; }
+    .titulo, .pie { padding-left: 20px; padding-right: 20px; }
+    .marco { margin-left: 20px; margin-right: 20px; }
+}
