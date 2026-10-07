@@ -304,3 +304,14 @@ para mostrar el listado de todas las imagenes subidas.(analiza/estudia el métod
 
 ![](TEMA1/img/paginaDeImagenes.png)
 
+#### `ejcookies.php`
+
+Realizar una aplicación que compruebe si existe la cookie “user” tiene datos, vuestro
+nombre, en caso de estar vacia que la cree con una caducidad de 1000. En la siguiente
+ejecución debe de aparecer vuetros nombre en el navegador.
+
+![alt text](TEMA1/img/formUsu.png)
+
+Si el usuario esta registrado ya, se le redirige a la web:
+
+![alt text](TEMA1/img/webCookies.png)
