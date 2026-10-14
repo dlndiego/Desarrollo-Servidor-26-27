@@ -1,0 +1,63 @@
+
+        /* Reseteo básico estrictamente estructural */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* El body no tiene ningún color asignado */
+        body {
+            font-family: sans-serif;
+        }
+
+        /* Contenedor principal (<header>): Uso de Flexbox para colocar 
+           el título a un lado y la navegación al otro lado. */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 2rem;
+            /* Nota: Sin background-color ni borderes de color innecesarios */
+        }
+
+        /* Colocación y tipografía básica del Título (h1) */
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Colocación de la barra de navegación (<nav>) */
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Lista de elementos del menú en línea */
+        header nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px; /* Separación estructural entre botones */
+        }
+
+        /* ==========================================
+           ÚNICO ELEMENTO CON COLOR: LOS BOTONES
+           ================================---------- */
+        header nav ul li a {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            
+            /* Color amarillo solicitado exclusivamente para los botones */
+            background-color: #FFD43B; 
+            color: #000000; /* Texto contrastado legible sobre amarillo */
+            
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Efecto opcional sutil al interactuar con el botón amarillo */
+        header nav ul li a:hover {
+            background-color: #FCC419;
+        }

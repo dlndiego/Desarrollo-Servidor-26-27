@@ -315,3 +315,59 @@ ejecución debe de aparecer vuetros nombre en el navegador.
 Si el usuario esta registrado ya, se le redirige a la web:
 
 ![alt text](TEMA1/img/webCookies.png)
+
+#### `preferencias.php`
+
+• preferencias.php con un formulario que le pida al usuario su nombre y su color
+favorito (a elegir de una lista desplegable, o con el control input type=”color” de
+HTML5). El formulario deberá enviarse a guarda_prefs.php.
+• guarda_prefs.php que recogerá los datos del formulario anterior, y los guardará
+en dos cookies llamadas nombreusu y colorusu, con 5 minutos de duración. Esta
+página redirigirá (con header) a la página index.php una vez almacenadas las
+cookies.
+• index.php que, si hay cookies guardadas del usuario, mostrará una página con el
+color de fondo preferido y un mensaje personalizado de bienvenida (por ejemplo,
+“Bienvenido, Pepe”). Si no hay cookies guardadas, mostrará una página confondo
+blanco y el mensaje “Página de inicio”. En cualquiera de los dos casos, habrá un
+enlace para ir al formulario preferencias.php.
+• Añade una página borrar_prefs.php que elimine las preferencias (cookies) del
+usuario actual, y redirija a index.php. Pon un enlace "Borrar preferencias
+" en el index.php que llame a esta página, pero que se muestre sólo cuando el
+usuario actual tenga preferencias guardadas
+
+Pagina del form : 
+![](TEMA1/img/preferencias.png)
+
+Pagina de index.php:
+![](TEMA1/img/bienvenidoCookies.png)
+
+- Codigo de las paginas de logica:
+    - guardar_prefs.php
+    ```php
+    <?php
+    $usuario = $_GET["usuario"];
+    $color = $_GET["color"];
+
+    //hacemos un array de nombres de usuarios
+    $usuarios= array("Pepe", "Diego", "Dani");
+
+
+    setcookie("usuario", $usuario, time() + 300);
+    setcookie("color", $color, time() + 300);
+    //usamos header para redirigir a index.php
+    header("Location:index.php");
+    echo "Bienvenido $usuario, seras redirigido en 3 segundos";
+    exit();
+    ?> 
+    ```
+    - borrar_prefs.php
+    ```php
+    <?php
+    //borramos las cookies y redirigimos a index.php
+    setcookie("usuario", time() - 300);
+    setcookie("color", time() - 300);
+    header("Location:index.php");
+    ?>
+    ```
+
+ 
