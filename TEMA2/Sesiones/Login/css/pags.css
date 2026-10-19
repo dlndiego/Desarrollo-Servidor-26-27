@@ -1,0 +1,167 @@
+/* ==========================================================================
+   Cabecera de la Aplicación (Header)
+   ========================================================================== */
+
+.app-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Identidad de la Marca en Cabecera */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo-small {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.brand-logo-small svg {
+  width: 20px;
+  height: 20px;
+}
+
+.brand-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+/* Navegación integrada en la Cabecera */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f8fafc;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #64748b;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+  color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.08);
+}
+
+.header-nav a.active {
+  background-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+}
+
+/* Botón de Cierre de Sesión */
+.header-user {
+  display: flex;
+  align-items: center;
+}
+
+.btn-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background-color: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-logout svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-logout:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+
+/* ==========================================================================
+   Mensaje de Bienvenida y Contenido
+   ========================================================================== */
+
+.main-content {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 24px;
+}
+
+.welcome-banner {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2563eb;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.welcome-message {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  color: #334155;
+  margin: 0;
+}
+
+.welcome-message strong {
+  color: #2563eb;
+}
+
+/* Adaptabilidad móvil */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .header-nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-user {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

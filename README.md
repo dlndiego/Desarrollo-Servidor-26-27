@@ -392,4 +392,66 @@ prueba:passprueba
 • Crea las páginas index.php, pag1.php y pag2.php que incluyan la cabecera anterior (con require), y como contenido, ponles simplemente un mensaje de bienvenida diferente para cada página (para identificarlas).
 • Finalmente, la página de login.php tendrá un formulario para pedirle al usuario su login y password, y se llamará a sí misma. Los datos que reciba del formulario, los comparará con los del fichero usuarios.txt para ver si coincide con alguno. Si coincide, creará un atributo loginusu en sesión con el login del usuario y redirigirá a index.php. Si no coincide con ninguno, se volverá a cargar el propio formulario, con un mensaje de error en rojo indicando que el login o la contraseña son incorrectos
 
+- Al acceder a la pagina se muestra el login.php:
 
+    ![](TEMA2/IMG/loginApex.png)
+
+- Al poner un usuario y contraseñas correctos te manda a el index.php que esta vinculado con cabecera que tiene el siguiente codigo:    
+
+    - **`CODIGO DE CABECERA`**
+    ```php
+        <?php
+        session_start();
+
+        if(!isset($_SESSION['loginusu'])){
+            header("Location:login.php");
+            exit();
+        }
+        ?>
+        <link rel="stylesheet" href="css/index.css">
+        <nav>
+            <a href="index.php" class="active">INDEX</a>
+            <a href="pag1.php">PAG 1</a>
+            <a href="pag2.php">PAG 2</a>
+        </nav>
+    ```
+- Y index.php se ve de esta manera:
+
+    ![](TEMA2/IMG/indexApex.png)
+
+- Ahora tenemos permiso a las 2 paginas si pinchamos en los enlaces accedemos a lo siguiente
+    - Vista de la PAG1:
+    
+    ![](TEMA2/IMG/pagina1Apex.png)
+
+    - Vista de la PAG2: 
+
+    ![](TEMA2/IMG/pagina2Apex.png)
+
+#### `carro.php`
+
+Crea una carpeta llamada carro con una página llamada carro.php con una lista de
+enlaces de diferentes artículos y su precio. Por ejemplo:
+```
+Zapatillas Nike (60 euros)
+Sudadera Domyos (15 euros)
+Pala de pádel Vairo (50 euros)
+Pelota de baloncesto Molten (20 euros)
+```
+Puedes alimentar la lista desde un array de artículos previamente definido en PHP,
+como este:
+```PHP
+$articulos = array(
+array("id" => 1, "nombre" => "Zapatillas Nike", "precio" => 60),
+array("id" => 2, "nombre" => "Sudadera Domyos", "precio" => 15),
+array("id" => 3, "nombre" => "Pala de pádel Vairo", "precio" =>
+50),
+array("id" => 4, "nombre" => "Pelota de baloncesto Molten", "
+precio"
+=> 20)
+);
+```
+Cada vez que el usuario haga clic en un artículo, se enviará a la propia página, recogerá el código o id del artículo (que se le enviará como parámetro) y con ello buscará el artículo en el catálogo y acumulará en sesión el total de lo que ha ido comprando, junto con un listado de los artículos que ha seleccionado, para mostrarlo todo por pantalla.
+
+Y esto queda asi: 
+![](TEMA2/IMG/carroNike.png)

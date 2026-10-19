@@ -96,8 +96,6 @@
     $usu = $_POST['username'];
     $contraseña = $_POST['password'];
 
-    var_dump($usu);
-
     if (file_exists($fichero)){
         $filas = file($fichero);
         foreach ($filas as $fila) {
