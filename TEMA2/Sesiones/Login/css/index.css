@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Navegación Corporativa (Apex Dynamics)
+   ========================================================================== */
+
+/* Contenedor principal de la barra de navegación (Centrado) */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 30px auto; /* Centra la barra horizontalmente en la página */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  border: 1px solid #e2e8f0;
+}
+
+/* Estilo de los enlaces */
+nav a {
+  text-decoration: none;
+  color: #64748b; /* Color texto secundario */
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.03em;
+}
+
+/* Efecto al pasar el cursor (Hover) */
+nav a:hover {
+  color: #2563eb; /* Azul corporativo */
+  background-color: rgba(37, 99, 235, 0.08); /* Fondo suave azul */
+}
+
+/* Estado activo / clic */
+nav a:active {
+  transform: scale(0.97);
+}
+
+/* Adaptabilidad para pantallas móviles */
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    width: 90%;
+    gap: 6px;
+    padding: 16px;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+  }
+}

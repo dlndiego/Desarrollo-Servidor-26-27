@@ -8,13 +8,16 @@ if (!isset($_SESSION['alumnos'])) {
 
 // Procesar el formulario solo cuando se envíe mediante POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'])) {
+    $calcularMedia = ($_POST["mates"] + $_POST["caste"] + $_POST["ingles"] + $_POST["musica"]) / 4;
     $nuevoAlumno = [
         $_POST["nombre"],
         $_POST["mates"],
         $_POST["caste"],
         $_POST["ingles"],
-        $_POST["musica"]
+        $_POST["musica"],
+        $calcularMedia
     ];
+    $cont = 0;
     $_SESSION['alumnos'][] = $nuevoAlumno;
 }
 ?>
@@ -81,6 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'])) {
                             <th>Castellano</th>
                             <th>Inglés</th>
                             <th>Música</th>
+                            <th>Media</th>
                         </tr>
                     </thead>
                     <tbody>
