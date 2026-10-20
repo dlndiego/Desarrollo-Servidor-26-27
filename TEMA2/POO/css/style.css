@@ -1,0 +1,190 @@
+/* ==========================================================
+   estilos.css — Hoja de estilos para Clase.php
+   ========================================================== */
+
+/* ---------- 1. Variables ---------- */
+:root {
+    --tinta: #1b2333;
+    --fondo: #eef1f7;
+    --superficie: #ffffff;
+    --acento: #2f5bea;
+    --acento-oscuro: #1e3fb0;
+    --linea: #d3d9e6;
+    --codigo-fondo: #f4f6fb;
+    --cabecera-fondo: #1b2333;
+    --cabecera-texto: #ffffff;
+
+    --fuente-texto: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    --fuente-codigo: "Cascadia Code", "Fira Code", Consolas, "Courier New", monospace;
+}
+
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 2rem 1rem 3rem;
+    background: var(--fondo);
+    color: var(--tinta);
+    font-family: var(--fuente-texto);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+section {
+    max-width: 62rem;
+    margin: 0 auto;
+}
+
+/* ---------- 3. Cabecera y navegación ---------- */
+header {
+    background: var(--superficie);
+    border: 1px solid var(--linea);
+    border-top: 6px solid var(--acento);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+nav a {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--acento);
+    border-radius: 999px;
+    color: var(--acento);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+nav a:hover {
+    background: var(--acento);
+    color: #fff;
+}
+
+nav a:focus-visible {
+    outline: 3px solid var(--acento-oscuro);
+    outline-offset: 2px;
+}
+
+/* ---------- 4. Bloques de contenido ---------- */
+article {
+    background: var(--superficie);
+    border: 1px solid var(--linea);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto; /* las tablas anchas se desplazan dentro del bloque */
+}
+
+article > div {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* ---------- 5. Tablas ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+th,
+td {
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--linea);
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Fila de cabecera: funciona con <th> y con la primera fila de <td> */
+th,
+tr:first-child td {
+    background: var(--cabecera-fondo);
+    color: var(--cabecera-texto);
+    font-weight: 600;
+}
+
+/* Las celdas dentro de <th> (HTML original) heredan el estilo de cabecera */
+th td {
+    border: none;
+    background: transparent;
+}
+
+/* Filas alternas */
+tr:nth-child(even) td {
+    background: var(--codigo-fondo);
+}
+
+/* Fila de cabecera siempre con su color, aunque sea "par" */
+tr:first-child td,
+tr:first-child th {
+    background: var(--cabecera-fondo);
+}
+
+/* Celda con rowspan (ESTUDIANTE / PERSONA): destacada */
+td[rowspan] {
+    background: #e3e9fd;
+    color: var(--acento-oscuro);
+    font-weight: 700;
+    vertical-align: middle;
+    width: 11rem;
+}
+
+/* Primera tabla: la última celda de cada fila es código PHP */
+article:first-of-type td:last-child {
+    font-family: var(--fuente-codigo);
+    font-size: 0.85rem;
+    word-break: break-word;
+}
+
+article:first-of-type tr:first-child td:last-child {
+    font-family: var(--fuente-texto);
+    font-size: 0.95rem;
+}
+
+/* Tablas de resultados: columnas de clase y función más estrechas */
+article > div table td:nth-child(1),
+article > div table td:nth-child(2) {
+    white-space: nowrap;
+}
+
+/* ---------- 6. Móvil ---------- */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem 0.5rem 2rem;
+    }
+
+    header,
+    article {
+        padding: 1rem;
+    }
+
+    th,
+    td {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    td[rowspan] {
+        width: auto;
+    }
+}

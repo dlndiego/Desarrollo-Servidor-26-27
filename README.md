@@ -455,3 +455,139 @@ Cada vez que el usuario haga clic en un artículo, se enviará a la propia pági
 
 Y esto queda asi: 
 ![](TEMA2/IMG/carroNike.png)
+
+#### `Clases.php`
+
+Crea una página llamada clases.php con:
+    
+    • una clase llamada Persona que tenga como atributos un DNI, un nombre y un email
+        
+        – Crea un constructor que permita rellenar esos tres atributos,
+        – y los getters y setters correspondientes.
+        – Define también un método Mostrar para sacar por la página los datos de la persona
+        (en un párrafo, separados por guiones).
+        – Define adecuadamente la visibilidad (pública o privada) de cada atributo o método.
+    
+    • Crea una segunda clase llamada Estudiante que:
+        
+        – herede de Persona, y
+        – añada un atributo llamado numExpediente.
+        – Crea su constructor, sus getters y setters y su correspondiente método Mostrar.
+
+Fuera de las clases, entre el código HTML de la página, crea un objeto de cada tipo (una Persona y un Estudiante), con los valores que quieras, llama después a algún setter de cada una para cambiar el valor de algún atributo, y finalmente llama a sus métodos Mostrar para que saquen la información de cada uno.
+
+##### Conceptos practicados
+ 
+| Concepto | Dónde se aplica |
+|---|---|
+| Clases y objetos | `Persona` y `Estudiante`, instanciadas con `new` |
+| Constructores | `__construct()` en ambas clases |
+| Encapsulación | Atributos `protected` / `private` con acceso mediante *getters* y *setters* |
+| Herencia | `Estudiante extends Persona` |
+| Reutilización de código | `parent::__construct()` en el constructor de `Estudiante` |
+| Polimorfismo (sobrescritura) | `mostrar()` redefinido en `Estudiante` |
+| Integración PHP + HTML | Objetos creados y mostrados dentro del marcado de la página |
+
+Esto queda de esta manera:
+
+![](TEMA2/IMG/clase.png)
+
+```php
+`CODIGO PERSONA`
+<?php
+class Persona {
+    
+    private $DNI = "";
+    private $nombre = "";
+    private $mail = "";
+
+    public function __construct($d, $n, $m ){
+        $this->DNI = $d;
+        $this->nombre = $n;
+        $this->mail = $m;
+    }
+
+    public function getDNI(){
+        if($this->DNI == ""){
+            return "Debes completar el campo DNI.";
+        }else{
+            return $this->DNI;
+        }
+    }
+    public function getNom(){
+        if($this->nombre == ""){
+            return "Debes completar el campo Nombre.";
+        }else{
+            return $this->nombre;
+        }
+    }
+    public function getMail(){
+        if($this->mail == ""){
+            return "Debes completar el campo Mail.";
+        }else{
+            return $this->mail;
+        }
+    }
+
+    public function setDNI($d){
+        $this->DNI = $d;
+    }
+
+    public function setNombre($n){
+        $this->nombre = $n;
+    }
+
+    public function setMail($m){
+        $this->mail = $m;
+    }
+
+    public function mostrar(){
+        return "DNI: ".$this ->DNI ." NOMBRE: ". $this ->nombre . " MAIL: " . $this ->mail ;
+    }
+}
+?>
+```
+```php
+`CODIGO ESTUDIANTE`
+<?php
+include("Persona.php");
+class Estudiante extends Persona {
+    
+    private $numExp= 0;
+
+    public function __construct($num,$d, $n, $m){
+        $this->numExp= $num;
+        parent::__construct($d, $n, $m);
+    }
+
+    public function getNumExp(){
+        return $this->numExp;
+    }
+
+    public function setNumExp($numExp){
+        $this->numExp=$numExp;
+    }
+
+    public function mostrar(){
+        return "Nº EXPEDIENTE: " . $this ->numExp ." ".parent::mostrar();
+    }
+}
+?>
+```
+```php
+`LOGICA CLASE.PHP`
+<?PHP
+include("Estudiante.php");
+
+$alu1 = new Estudiante(5, "56322754G","Diego","fhwfwf@gmail.com");
+$alu2 = new Estudiante(4, "59313440D","Noemi","noemi@gmail.com");
+$alu3 = new Estudiante(3, "56391491L","Caterine","caterine@gmail.com");
+
+$per1 = new Persona("55330718D","Pepe","pepdev3@gmail.com");
+$per2 = new Persona("44581759G","Miranda","mirandaw@gmail.com");
+$per3 = new Persona("56391491L","Caterine","Caterine@gmail.com");
+?>
+```
+###### ADEMAS DE LA LOGICA AÑADIDA EN LAS TABLAS DE LA IMAGEN, QUE SE PUEDEN VER EN EL CODIGO DE [CLASE.PHP](TEMA2/POO/Clases.php)
+
+
