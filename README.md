@@ -590,4 +590,6 @@ $per3 = new Persona("56391491L","Caterine","Caterine@gmail.com");
 ```
 ###### ADEMAS DE LA LOGICA AÑADIDA EN LAS TABLAS DE LA IMAGEN, QUE SE PUEDEN VER EN EL CODIGO DE [CLASE.PHP](TEMA2/POO/Clases.php)
 
+#### `BBDD`
+
 
