@@ -592,4 +592,16 @@ $per3 = new Persona("56391491L","Caterine","Caterine@gmail.com");
 
 #### `BBDD`
 
+Voy a hacer una `BD` que almacenara juegos es decir: **Titulos,Genero,Precio**.
+
+Depues de un largo periodo de dias.
+
+Visualmente queda asi.
+
+![](TEMA2/IMG/viewBD.png)
+
+y si le damos a insertar pasa lo siguiente: 
+
+![](TEMA2/IMG/viewActualizarBD.png)
+
 
