@@ -26,7 +26,7 @@ session_start();
             <input type="text" placeholder="Ej : Diego" name="nom" class="text">
             <label for="">Profesion:</label>
             <input type="text" placeholder="Ej : Informatico" name="prof" class="text">
-            <input type="submit">
+            <input type="submit" class="enviarForm1">
         </form>
     </article>
     
@@ -40,22 +40,22 @@ session_start();
     ?>
 
     <table>
-        <tr>
-            <td>NOMBRE</td>
-            <td>PROFESION</td>
+        <tr class="trInfo">
+            <td class="info">NOMBRE</td>
+            <td class="info">PROFESION</td>
         </tr>
         <?php
             foreach ($_SESSION["personas"] as $nom => $prof){
             echo "<tr>";
-                echo "<td>".htmlspecialchars($nom)."</td>";
-                echo "<td>".htmlspecialchars($prof)."</td>";
+                echo "<td class='dato'>".htmlspecialchars($nom)."</td>";
+                echo "<td class='dato'>".htmlspecialchars($prof)."</td>";
             echo "</tr>";
             }
         ?>
     </table>
     
-    <form action="prueba2.php" method="post">
-        <input type="submit" value="Cerrar Sesion" name="borrar">
+    <form action="prueba2.php" method="post" class="form2">
+        <input type="submit" value="Cerrar Sesion" name="borrar" class="borrar">
     </form>
     <?php
         if(isset($_POST["borrar"])){
