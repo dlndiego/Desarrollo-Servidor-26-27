@@ -8,22 +8,26 @@ if($_POST["mail"] != "" && $_POST["passw"] != ""){
 }
 
 
-
 $nombre = obtenerNombre($mail);
 
 $usuario = new Usuario($nombre,$mail,$password);
 
-echo $usuario->__toString();
 
 if($usuario->comprobarPassword($password) == true){
     session_start();
-    $_SESSION["persona"]=$usuario; 
+    $_SESSION["persona"]=$usuario;
+    if(isset($_POST["recordar"])){
+        setcookie("email_guardado",$mail, time()+ 500);
+    }else{
+        setcookie("email_guardado","",1);
+    }
     header("Location:bienvenida.php");
     exit();
-}/*else{
-    header("");
+}else{
+    header("Location:login.php");
+    exit();
 }
-*/
+
 function obtenerNombre($mail){
     $usuario = "";
     for ($i=0; $i < strlen($mail) ; $i++) { 

@@ -10,9 +10,14 @@ session_start();
     <title>Bienvenida</title>
 </head>
 <body>
-    <h1>Bienvenido <?php echo $_SESSION["persona"][0]-> __get("nom") ?></h1>
+    <header>
+        <h1>Bienvenido <?php echo $_SESSION["persona"]-> __get("nom") ?></h1>
+        <a href="login.php">Volver</a>
+    </header>
+    
+    
     <div>
-        <p>Bienvenido a el usuario: <?php echo $_SESSION["persona"][0] -> __get("nom") ?> con correo: <?php echo $_SESSION["persona"][0] -> __get("email") ?> .</p>
+        <p>Bienvenido a el usuario: <?php echo $_SESSION["persona"] -> __get("nom") ?> con correo: <?php echo $_SESSION["persona"] -> __get("email") ?> .</p>
     </div>
 </body>
 </html>

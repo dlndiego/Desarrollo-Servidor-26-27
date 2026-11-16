@@ -9,7 +9,16 @@
     <head><h1>Inicio de sesion</h1></head>
     <form action="procesar.php" method="post">
         <label for="">Email:</label>
-        <input type="text" name="mail" >
+        <?php 
+            if(isset($_COOKIE["email_guardado"])){
+                $value = $_COOKIE["email_guardado"];
+            }else{
+                $value = "";
+            } 
+        ?>
+        <input type="text" name="mail" value=<?= $value?>> 
+        <label for="">Recordar Email?</label>
+        <input type="checkbox" name="recordar">
         <label for="">Contraseña:</label>
         <input type="password" name="passw" >
         <input type="submit">
