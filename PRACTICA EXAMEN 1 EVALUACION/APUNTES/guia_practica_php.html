@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>guia_practica_php.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="php--guía-práctica-de-sintaxis-y-ejemplos">PHP — Guía práctica de sintaxis y ejemplos</h1>
+<blockquote>
+<p><strong>Objetivo:</strong> consultar rápidamente <strong>qué escribir, cuándo usarlo y cómo aplicarlo</strong>. Basada en los cinco apuntes proporcionados: PHP básico, funciones, formularios, cookies/sesiones y POO. Los ejemplos son independientes salvo cuando se indican varios archivos.</p>
+<p><strong>Para probarlos:</strong> guarda el código en archivos <code>.php</code> y ejecútalos con un servidor PHP (por ejemplo, en la carpeta del proyecto: <code>php -S localhost:8000</code>). Abre <code>http://localhost:8000/archivo.php</code>. PHP se ejecuta en el servidor, no al abrir el archivo directamente como HTML.</p>
+</blockquote>
+<h2 id="índice">Índice</h2>
+<ol>
+<li><a href="#1-php-b%C3%A1sico">PHP básico</a></li>
+<li><a href="#2-condiciones-y-bucles">Condiciones y bucles</a></li>
+<li><a href="#3-arrays">Arrays</a></li>
+<li><a href="#4-errores-y-excepciones">Errores y excepciones</a></li>
+<li><a href="#5-funciones-y-archivos">Funciones y archivos</a></li>
+<li><a href="#6-cadenas-y-fechas">Cadenas y fechas</a></li>
+<li><a href="#7-formularios">Formularios</a></li>
+<li><a href="#8-cookies-y-sesiones">Cookies y sesiones</a></li>
+<li><a href="#9-poo-clases-y-objetos">POO: clases y objetos</a></li>
+<li><a href="#10-poo-herencia-m%C3%A9todos-m%C3%A1gicos-y-namespaces">POO: herencia, métodos mágicos y namespaces</a></li>
+<li><a href="#11-miniaplicaciones-pr%C3%A1cticas">Miniaplicaciones prácticas</a></li>
+<li><a href="#12-chuleta-r%C3%A1pida-y-errores-t%C3%ADpicos">Chuleta rápida y errores típicos</a></li>
+</ol>
+<hr>
+<h2 id="1-php-básico">1. PHP básico</h2>
+<h3 id="11-escribir-php-y-mostrar-resultados">1.1 Escribir PHP y mostrar resultados</h3>
+<p><strong>Para qué:</strong> generar texto o HTML desde el servidor.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-variable">$nombre</span> = <span class="hljs-string">&quot;Ana&quot;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Hola, &quot;</span> . <span class="hljs-variable">$nombre</span>;  <span class="hljs-comment">// Hola, Ana</span>
+<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;¡Bienvenida!&quot;</span>;
+</div></code></pre>
+<p><strong>Mezclar con HTML:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-variable">$precio</span> = <span class="hljs-number">12.5</span>; <span class="hljs-meta">?&gt;</span>
+&lt;h1&gt;Producto&lt;/h1&gt;
+&lt;p&gt;Precio: <span class="hljs-meta">&lt;?=</span> <span class="hljs-variable">$precio</span> <span class="hljs-meta">?&gt;</span> €&lt;/p&gt;
+</div></code></pre>
+<ul>
+<li><code>&lt;?php</code> abre PHP; <code>?&gt;</code> lo cierra si necesitas volver a HTML.</li>
+<li><code>echo</code> muestra contenido; <code>&lt;?= $variable ?&gt;</code> equivale a <code>echo</code>.</li>
+<li><code>.</code> concatena textos; <code>;</code> termina instrucciones.</li>
+<li>Comentarios: <code>// una línea</code>, <code># una línea</code>, <code>/* varias líneas */</code>.</li>
+</ul>
+<h3 id="12-variables-y-tipos">1.2 Variables y tipos</h3>
+<pre class="hljs"><code><div><span class="hljs-variable">$nombre</span> = <span class="hljs-string">&quot;Lucía&quot;</span>;     <span class="hljs-comment">// string</span>
+<span class="hljs-variable">$edad</span> = <span class="hljs-number">20</span>;           <span class="hljs-comment">// int</span>
+<span class="hljs-variable">$altura</span> = <span class="hljs-number">1.72</span>;       <span class="hljs-comment">// float</span>
+<span class="hljs-variable">$activo</span> = <span class="hljs-literal">true</span>;       <span class="hljs-comment">// bool</span>
+<span class="hljs-variable">$sinValor</span> = <span class="hljs-literal">null</span>;     <span class="hljs-comment">// null</span>
+
+<span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$edad</span>);      <span class="hljs-comment">// int(20): tipo + valor</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">gettype</span>(<span class="hljs-variable">$altura</span>); <span class="hljs-comment">// double</span>
+</div></code></pre>
+<p><strong>Conversión de tipos:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-variable">$texto</span> = <span class="hljs-string">&quot;25&quot;</span>;
+<span class="hljs-variable">$numero</span> = (<span class="hljs-keyword">int</span>) <span class="hljs-variable">$texto</span>;   <span class="hljs-comment">// 25</span>
+<span class="hljs-variable">$decimal</span> = (<span class="hljs-keyword">float</span>) <span class="hljs-string">&quot;3.5&quot;</span>; <span class="hljs-comment">// 3.5</span>
+<span class="hljs-variable">$cadena</span> = (<span class="hljs-keyword">string</span>) <span class="hljs-number">10</span>;    <span class="hljs-comment">// &quot;10&quot;</span>
+</div></code></pre>
+<p><strong>Variables variables (poco habitual):</strong></p>
+<pre class="hljs"><code><div><span class="hljs-variable">$clave</span> = <span class="hljs-string">&quot;ciudad&quot;</span>;
+<span class="hljs-variable">$$clave</span> = <span class="hljs-string">&quot;Valencia&quot;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$ciudad</span>; <span class="hljs-comment">// Valencia</span>
+</div></code></pre>
+<h3 id="13-comprobar-variables">1.3 Comprobar variables</h3>
+<pre class="hljs"><code><div><span class="hljs-variable">$nombre</span> = <span class="hljs-string">&quot;&quot;</span>;
+<span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$nombre</span>)); <span class="hljs-comment">// true: existe y no es null</span>
+<span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$nombre</span>)); <span class="hljs-comment">// true: está vacía</span>
+<span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$nombre</span>)); <span class="hljs-comment">// true</span>
+
+<span class="hljs-keyword">unset</span>(<span class="hljs-variable">$nombre</span>); <span class="hljs-comment">// elimina la variable</span>
+</div></code></pre>
+<p><strong>Patrón útil para entradas opcionales:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-variable">$nombre</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;nombre&quot;</span>] ?? <span class="hljs-string">&quot;Invitado&quot;</span>;
+</div></code></pre>
+<p><code>??</code> usa el valor de la derecha si el de la izquierda no existe o es <code>null</code>.</p>
+<h3 id="14-constantes">1.4 Constantes</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">IVA</span> = <span class="hljs-number">0.21</span>;
+<span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;APP_NOMBRE&quot;</span>, <span class="hljs-string">&quot;Mi tienda&quot;</span>);
+
+<span class="hljs-variable">$precio</span> = <span class="hljs-number">100</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$precio</span> * (<span class="hljs-number">1</span> + IVA); <span class="hljs-comment">// 121</span>
+</div></code></pre>
+<h3 id="15-operadores-esenciales">1.5 Operadores esenciales</h3>
+<table>
+<thead>
+<tr>
+<th>Operación</th>
+<th>Sintaxis</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Suma / resta</td>
+<td><code>+</code>, <code>-</code></td>
+<td><code>$a + $b</code></td>
+</tr>
+<tr>
+<td>Multiplicar / dividir</td>
+<td><code>*</code>, <code>/</code></td>
+<td><code>$a * $b</code></td>
+</tr>
+<tr>
+<td>Resto</td>
+<td><code>%</code></td>
+<td><code>10 % 3</code> → <code>1</code></td>
+</tr>
+<tr>
+<td>Potencia</td>
+<td><code>**</code></td>
+<td><code>2 ** 3</code> → <code>8</code></td>
+</tr>
+<tr>
+<td>Incremento</td>
+<td><code>++</code></td>
+<td><code>$i++</code></td>
+</tr>
+<tr>
+<td>Acumular</td>
+<td><code>+=</code>, <code>-=</code>, <code>*=</code></td>
+<td><code>$total += 5</code></td>
+</tr>
+<tr>
+<td>Concatenar</td>
+<td><code>.</code></td>
+<td><code>&quot;Hola &quot; . $nombre</code></td>
+</tr>
+<tr>
+<td>Añadir texto</td>
+<td><code>.=</code></td>
+<td><code>$texto .= &quot;!&quot;</code></td>
+</tr>
+<tr>
+<td>Igualdad de valor</td>
+<td><code>==</code></td>
+<td><code>5 == &quot;5&quot;</code> → <code>true</code></td>
+</tr>
+<tr>
+<td>Igualdad estricta</td>
+<td><code>===</code></td>
+<td><code>5 === &quot;5&quot;</code> → <code>false</code></td>
+</tr>
+<tr>
+<td>Distinto estricto</td>
+<td><code>!==</code></td>
+<td><code>$a !== $b</code></td>
+</tr>
+<tr>
+<td>Mayor / menor</td>
+<td><code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></td>
+<td><code>$edad &gt;= 18</code></td>
+</tr>
+<tr>
+<td>Y / O / NO</td>
+<td><code>&amp;&amp;</code>, `</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Consejo:</strong> prefiere <code>===</code> y <code>!==</code> para evitar conversiones inesperadas. Usa paréntesis si mezclas operadores.</p>
+<hr>
+<h2 id="2-condiciones-y-bucles">2. Condiciones y bucles</h2>
+<h3 id="21-if-elseif-else">2.1 <code>if</code>, <code>elseif</code>, <code>else</code></h3>
+<p><strong>Caso:</strong> decidir si un alumno aprueba.</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$nota</span> = <span class="hljs-number">7</span>;
+
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$nota</span> &gt;= <span class="hljs-number">9</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Sobresaliente&quot;</span>;
+} <span class="hljs-keyword">elseif</span> (<span class="hljs-variable">$nota</span> &gt;= <span class="hljs-number">5</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Aprobado&quot;</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Suspenso&quot;</span>;
+}
+</div></code></pre>
+<p><strong>Ternario para decisiones simples:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">echo</span> <span class="hljs-variable">$edad</span> &gt;= <span class="hljs-number">18</span> ? <span class="hljs-string">&quot;Mayor de edad&quot;</span> : <span class="hljs-string">&quot;Menor&quot;</span>;
+</div></code></pre>
+<h3 id="22-switch">2.2 <code>switch</code></h3>
+<p><strong>Caso:</strong> mostrar una opción de menú.</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$opcion</span> = <span class="hljs-number">2</span>;
+
+<span class="hljs-keyword">switch</span> (<span class="hljs-variable">$opcion</span>) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Crear&quot;</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Editar&quot;</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Opción desconocida&quot;</span>;
+}
+</div></code></pre>
+<p><code>break</code> evita seguir ejecutando los siguientes <code>case</code>.</p>
+<h3 id="23-for">2.3 <code>for</code></h3>
+<p><strong>Cuándo:</strong> sabes cuántas repeticiones quieres.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-variable">$i</span> = <span class="hljs-number">1</span>; <span class="hljs-variable">$i</span> &lt;= <span class="hljs-number">5</span>; <span class="hljs-variable">$i</span>++) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$i</span> &quot;</span>;
+}
+<span class="hljs-comment">// 1 2 3 4 5</span>
+</div></code></pre>
+<h3 id="24-while-y-dowhile">2.4 <code>while</code> y <code>do...while</code></h3>
+<p><strong>Cuándo:</strong> repites mientras se cumpla una condición.</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$intentos</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (<span class="hljs-variable">$intentos</span> &lt; <span class="hljs-number">3</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Intento <span class="hljs-subst">$intentos</span>\n&quot;</span>;
+    <span class="hljs-variable">$intentos</span>++;
+}
+</div></code></pre>
+<p><code>do...while</code> ejecuta el bloque <strong>al menos una vez</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$i</span> = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">do</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span>;
+    <span class="hljs-variable">$i</span>++;
+} <span class="hljs-keyword">while</span> (<span class="hljs-variable">$i</span> &lt; <span class="hljs-number">5</span>);
+<span class="hljs-comment">// Muestra 10 una vez</span>
+</div></code></pre>
+<h3 id="25-break-y-continue">2.5 <code>break</code> y <code>continue</code></h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-variable">$i</span> = <span class="hljs-number">1</span>; <span class="hljs-variable">$i</span> &lt;= <span class="hljs-number">10</span>; <span class="hljs-variable">$i</span>++) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span> === <span class="hljs-number">3</span>) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// salta el 3</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span> === <span class="hljs-number">7</span>) <span class="hljs-keyword">break</span>;    <span class="hljs-comment">// termina el bucle</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$i</span> &quot;</span>;            <span class="hljs-comment">// 1 2 4 5 6</span>
+}
+</div></code></pre>
+<h3 id="26-intercalar-php-y-html">2.6 Intercalar PHP y HTML</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-variable">$productos</span> = [<span class="hljs-string">&quot;Teclado&quot;</span>, <span class="hljs-string">&quot;Ratón&quot;</span>]; <span class="hljs-meta">?&gt;</span>
+
+&lt;ul&gt;
+<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$productos</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$producto</span>): <span class="hljs-meta">?&gt;</span>
+    &lt;li&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$producto</span>) <span class="hljs-meta">?&gt;</span>&lt;/li&gt;
+<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">endforeach</span>; <span class="hljs-meta">?&gt;</span>
+&lt;/ul&gt;
+</div></code></pre>
+<p>La sintaxis <code>foreach (...): ... endforeach;</code> es cómoda dentro de HTML.</p>
+<hr>
+<h2 id="3-arrays">3. Arrays</h2>
+<h3 id="31-array-numérico">3.1 Array numérico</h3>
+<pre class="hljs"><code><div><span class="hljs-variable">$colores</span> = [<span class="hljs-string">&quot;rojo&quot;</span>, <span class="hljs-string">&quot;verde&quot;</span>, <span class="hljs-string">&quot;azul&quot;</span>];
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$colores</span>[<span class="hljs-number">0</span>];      <span class="hljs-comment">// rojo (empieza en 0)</span>
+<span class="hljs-variable">$colores</span>[] = <span class="hljs-string">&quot;amarillo&quot;</span>; <span class="hljs-comment">// añade al final</span>
+<span class="hljs-variable">$colores</span>[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;negro&quot;</span>;   <span class="hljs-comment">// modifica</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$colores</span>);    <span class="hljs-comment">// 4</span>
+</div></code></pre>
+<p><strong>Recorrerlo:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$colores</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$color</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;&quot;</span> . <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$color</span>) . <span class="hljs-string">&quot;&lt;/p&gt;&quot;</span>;
+}
+</div></code></pre>
+<h3 id="32-array-asociativo">3.2 Array asociativo</h3>
+<p><strong>Cuándo:</strong> necesitas campos con nombre.</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$alumno</span> = [
+    <span class="hljs-string">&quot;nombre&quot;</span> =&gt; <span class="hljs-string">&quot;Sara&quot;</span>,
+    <span class="hljs-string">&quot;edad&quot;</span> =&gt; <span class="hljs-number">19</span>,
+    <span class="hljs-string">&quot;nota&quot;</span> =&gt; <span class="hljs-number">8</span>
+];
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$alumno</span>[<span class="hljs-string">&quot;nombre&quot;</span>]; <span class="hljs-comment">// Sara</span>
+<span class="hljs-variable">$alumno</span>[<span class="hljs-string">&quot;nota&quot;</span>] = <span class="hljs-number">9</span>;
+
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$alumno</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$clave</span> =&gt; <span class="hljs-variable">$valor</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$clave</span>: <span class="hljs-subst">$valor</span>&lt;br&gt;&quot;</span>;
+}
+</div></code></pre>
+<h3 id="33-arrays-multidimensionales">3.3 Arrays multidimensionales</h3>
+<p><strong>Caso:</strong> lista de alumnos.</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$alumnos</span> = [
+    [<span class="hljs-string">&quot;nombre&quot;</span> =&gt; <span class="hljs-string">&quot;Ana&quot;</span>, <span class="hljs-string">&quot;nota&quot;</span> =&gt; <span class="hljs-number">8</span>],
+    [<span class="hljs-string">&quot;nombre&quot;</span> =&gt; <span class="hljs-string">&quot;Luis&quot;</span>, <span class="hljs-string">&quot;nota&quot;</span> =&gt; <span class="hljs-number">4</span>],
+    [<span class="hljs-string">&quot;nombre&quot;</span> =&gt; <span class="hljs-string">&quot;Eva&quot;</span>, <span class="hljs-string">&quot;nota&quot;</span> =&gt; <span class="hljs-number">7</span>]
+];
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$alumnos</span>[<span class="hljs-number">0</span>][<span class="hljs-string">&quot;nombre&quot;</span>]; <span class="hljs-comment">// Ana</span>
+
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$alumnos</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$alumno</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$alumno</span>[<span class="hljs-string">&quot;nota&quot;</span>] &gt;= <span class="hljs-number">5</span>) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$alumno</span>[<span class="hljs-string">&quot;nombre&quot;</span>] . <span class="hljs-string">&quot; ha aprobado&lt;br&gt;&quot;</span>;
+    }
+}
+</div></code></pre>
+<h3 id="34-funciones-útiles-de-arrays">3.4 Funciones útiles de arrays</h3>
+<pre class="hljs"><code><div><span class="hljs-variable">$numeros</span> = [<span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">8</span>];
+
+<span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$numeros</span>);          <span class="hljs-comment">// 3</span>
+<span class="hljs-title function_ invoke__">array_push</span>(<span class="hljs-variable">$numeros</span>, <span class="hljs-number">10</span>); <span class="hljs-comment">// añade 10</span>
+<span class="hljs-title function_ invoke__">array_pop</span>(<span class="hljs-variable">$numeros</span>);      <span class="hljs-comment">// quita el último</span>
+<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-number">8</span>, <span class="hljs-variable">$numeros</span>);    <span class="hljs-comment">// true</span>
+<span class="hljs-title function_ invoke__">sort</span>(<span class="hljs-variable">$numeros</span>);           <span class="hljs-comment">// orden ascendente</span>
+<span class="hljs-title function_ invoke__">rsort</span>(<span class="hljs-variable">$numeros</span>);          <span class="hljs-comment">// orden descendente</span>
+
+<span class="hljs-variable">$persona</span> = [<span class="hljs-string">&quot;nombre&quot;</span> =&gt; <span class="hljs-string">&quot;Ana&quot;</span>, <span class="hljs-string">&quot;edad&quot;</span> =&gt; <span class="hljs-number">20</span>];
+<span class="hljs-title function_ invoke__">array_keys</span>(<span class="hljs-variable">$persona</span>);     <span class="hljs-comment">// [&quot;nombre&quot;, &quot;edad&quot;]</span>
+<span class="hljs-title function_ invoke__">array_values</span>(<span class="hljs-variable">$persona</span>);   <span class="hljs-comment">// [&quot;Ana&quot;, 20]</span>
+<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$persona</span>[<span class="hljs-string">&quot;edad&quot;</span>]);  <span class="hljs-comment">// true</span>
+</div></code></pre>
+<p><strong>Ejemplo práctico: calcular la media:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-variable">$notas</span> = [<span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">10</span>];
+<span class="hljs-variable">$media</span> = <span class="hljs-title function_ invoke__">array_sum</span>(<span class="hljs-variable">$notas</span>) / <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$notas</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Media: <span class="hljs-subst">$media</span>&quot;</span>; <span class="hljs-comment">// 8</span>
+</div></code></pre>
+<hr>
+<h2 id="4-errores-y-excepciones">4. Errores y excepciones</h2>
+<h3 id="41-detectar-errores-mientras-desarrollas">4.1 Detectar errores mientras desarrollas</h3>
+<pre class="hljs"><code><div><span class="hljs-title function_ invoke__">error_reporting</span>(E_ALL);
+<span class="hljs-title function_ invoke__">ini_set</span>(<span class="hljs-string">&quot;display_errors&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>); <span class="hljs-comment">// SOLO desarrollo</span>
+</div></code></pre>
+<p>Para inspeccionar valores: <code>var_dump($variable);</code>. El operador <code>@</code> oculta avisos de una expresión, pero <strong>es mejor gestionar el error</strong>.</p>
+<h3 id="42-try-catch-throw-finally">4.2 <code>try</code>, <code>catch</code>, <code>throw</code>, <code>finally</code></h3>
+<p><strong>Caso:</strong> no permitir divisiones por cero.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dividir</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-variable">$a</span>, <span class="hljs-keyword">float</span> <span class="hljs-variable">$b</span></span>): <span class="hljs-title">float</span> </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$b</span> == <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">InvalidArgumentException</span>(<span class="hljs-string">&quot;Divisor cero&quot;</span>);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$a</span> / <span class="hljs-variable">$b</span>;
+}
+
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">dividir</span>(<span class="hljs-number">10</span>, <span class="hljs-number">0</span>);
+} <span class="hljs-keyword">catch</span> (<span class="hljs-built_in">InvalidArgumentException</span> <span class="hljs-variable">$e</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Error: &quot;</span> . <span class="hljs-variable">$e</span>-&gt;<span class="hljs-title function_ invoke__">getMessage</span>();
+} <span class="hljs-keyword">finally</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot; | Operación finalizada&quot;</span>;
+}
+</div></code></pre>
+<hr>
+<h2 id="5-funciones-y-archivos">5. Funciones y archivos</h2>
+<h3 id="51-declarar-llamar-y-devolver-valores">5.1 Declarar, llamar y devolver valores</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sumar</span>(<span class="hljs-params"><span class="hljs-variable">$a</span>, <span class="hljs-variable">$b</span></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$a</span> + <span class="hljs-variable">$b</span>;
+}
+
+<span class="hljs-variable">$resultado</span> = <span class="hljs-title function_ invoke__">sumar</span>(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$resultado</span>; <span class="hljs-comment">// 7</span>
+</div></code></pre>
+<p><strong><code>echo</code> vs <code>return</code>:</strong> <code>echo</code> muestra; <code>return</code> entrega un valor para reutilizarlo.</p>
+<h3 id="52-tipos-de-parámetros-y-retorno">5.2 Tipos de parámetros y retorno</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calcularIVA</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-variable">$precio</span>, <span class="hljs-keyword">float</span> <span class="hljs-variable">$iva</span> = <span class="hljs-number">0.21</span></span>): <span class="hljs-title">float</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$precio</span> * <span class="hljs-variable">$iva</span>;
+}
+
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">calcularIVA</span>(<span class="hljs-number">100</span>);       <span class="hljs-comment">// 21</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">calcularIVA</span>(<span class="hljs-number">100</span>, <span class="hljs-number">0.10</span>); <span class="hljs-comment">// 10</span>
+</div></code></pre>
+<p>Los parámetros opcionales van normalmente al final.</p>
+<h3 id="53-paso-por-valor-y-por-referencia">5.3 Paso por valor y por referencia</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">duplicarValor</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> <span class="hljs-variable">$n</span></span>): <span class="hljs-title">void</span> </span>{
+    <span class="hljs-variable">$n</span> *= <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">duplicarReferencia</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> &amp;<span class="hljs-variable">$n</span></span>): <span class="hljs-title">void</span> </span>{
+    <span class="hljs-variable">$n</span> *= <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-variable">$x</span> = <span class="hljs-number">5</span>;
+<span class="hljs-title function_ invoke__">duplicarValor</span>(<span class="hljs-variable">$x</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$x</span>; <span class="hljs-comment">// 5</span>
+
+<span class="hljs-title function_ invoke__">duplicarReferencia</span>(<span class="hljs-variable">$x</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$x</span>; <span class="hljs-comment">// 10</span>
+</div></code></pre>
+<p><code>&amp;</code> permite modificar la variable original.</p>
+<h3 id="54-número-variable-de-argumentos">5.4 Número variable de argumentos</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sumarTodo</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> ...<span class="hljs-variable">$numeros</span></span>): <span class="hljs-title">int</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">array_sum</span>(<span class="hljs-variable">$numeros</span>);
+}
+
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">sumarTodo</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>); <span class="hljs-comment">// 10</span>
+</div></code></pre>
+<p><strong>Alternativa vista en los apuntes:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">contarArgumentos</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">func_num_args</span>();
+    <span class="hljs-comment">// func_get_args() obtiene todos en un array</span>
+    <span class="hljs-comment">// func_get_arg(0) obtiene el primero</span>
+}
+</div></code></pre>
+<h3 id="55-funciones-anónimas">5.5 Funciones anónimas</h3>
+<pre class="hljs"><code><div><span class="hljs-variable">$doble</span> = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-variable">$n</span></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$n</span> * <span class="hljs-number">2</span>;
+};
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$doble</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">// 10</span>
+</div></code></pre>
+<p><strong>Uso típico con arrays:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-variable">$numeros</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-variable">$dobles</span> = <span class="hljs-title function_ invoke__">array_map</span>(fn(<span class="hljs-variable">$n</span>) =&gt; <span class="hljs-variable">$n</span> * <span class="hljs-number">2</span>, <span class="hljs-variable">$numeros</span>);
+<span class="hljs-comment">// [2, 4, 6]</span>
+</div></code></pre>
+<h3 id="56-separar-código-include-y-require">5.6 Separar código: <code>include</code> y <code>require</code></h3>
+<p><strong><code>funciones.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">saludar</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$nombre</span></span>): <span class="hljs-title">string</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hola, <span class="hljs-subst">$nombre</span>&quot;</span>;
+}
+</div></code></pre>
+<p><strong><code>index.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">&quot;funciones.php&quot;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">saludar</span>(<span class="hljs-string">&quot;Marta&quot;</span>);
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th>Instrucción</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>include &quot;archivo.php&quot;</code></td>
+<td>Inserta un archivo; si falla, normalmente continúa con aviso</td>
+</tr>
+<tr>
+<td><code>require &quot;archivo.php&quot;</code></td>
+<td>El archivo es imprescindible</td>
+</tr>
+<tr>
+<td><code>include_once</code></td>
+<td>Incluye solo una vez</td>
+</tr>
+<tr>
+<td><code>require_once</code></td>
+<td>Requiere solo una vez; muy útil para funciones y clases</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Separar lógica y presentación:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-variable">$mensaje</span> = <span class="hljs-string">&quot;Bienvenido&quot;</span>;
+<span class="hljs-meta">?&gt;</span>
+&lt;h1&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$mensaje</span>) <span class="hljs-meta">?&gt;</span>&lt;/h1&gt;
+</div></code></pre>
+<h3 id="57-leer-y-escribir-ficheros">5.7 Leer y escribir ficheros</h3>
+<p><strong>Caso:</strong> guardar notas en un archivo.</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$archivo</span> = <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&quot;/notas.txt&quot;</span>;
+
+<span class="hljs-comment">// Añadir una línea sin borrar el contenido previo</span>
+<span class="hljs-title function_ invoke__">file_put_contents</span>(<span class="hljs-variable">$archivo</span>, <span class="hljs-string">&quot;Nueva nota\n&quot;</span>, FILE_APPEND);
+
+<span class="hljs-comment">// Leer todo</span>
+<span class="hljs-variable">$contenido</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$archivo</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">nl2br</span>(<span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$contenido</span>));
+</div></code></pre>
+<p><strong>Alternativa con apertura manual:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-variable">$fp</span> = <span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-string">&quot;notas.txt&quot;</span>, <span class="hljs-string">&quot;a&quot;</span>); <span class="hljs-comment">// a: añadir; w: sobrescribir; r: leer</span>
+<span class="hljs-title function_ invoke__">fwrite</span>(<span class="hljs-variable">$fp</span>, <span class="hljs-string">&quot;Hola\n&quot;</span>);
+<span class="hljs-title function_ invoke__">fclose</span>(<span class="hljs-variable">$fp</span>);
+</div></code></pre>
+<p><strong>Leer línea a línea:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-variable">$fp</span> = <span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-string">&quot;notas.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>);
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$fp</span> !== <span class="hljs-literal">false</span>) {
+    <span class="hljs-keyword">while</span> ((<span class="hljs-variable">$linea</span> = <span class="hljs-title function_ invoke__">fgets</span>(<span class="hljs-variable">$fp</span>)) !== <span class="hljs-literal">false</span>) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$linea</span>) . <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+    }
+    <span class="hljs-title function_ invoke__">fclose</span>(<span class="hljs-variable">$fp</span>);
+}
+</div></code></pre>
+<hr>
+<h2 id="6-cadenas-y-fechas">6. Cadenas y fechas</h2>
+<h3 id="61-trabajar-con-textos">6.1 Trabajar con textos</h3>
+<pre class="hljs"><code><div><span class="hljs-variable">$texto</span> = <span class="hljs-string">&quot;  Hola PHP  &quot;</span>;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$texto</span>);                <span class="hljs-comment">// &quot;Hola PHP&quot;</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">strlen</span>(<span class="hljs-string">&quot;Hola&quot;</span>);              <span class="hljs-comment">// 4</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">strtoupper</span>(<span class="hljs-string">&quot;hola&quot;</span>);          <span class="hljs-comment">// HOLA</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">strtolower</span>(<span class="hljs-string">&quot;HOLA&quot;</span>);          <span class="hljs-comment">// hola</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&quot;PHP&quot;</span>, <span class="hljs-string">&quot;web&quot;</span>, <span class="hljs-variable">$texto</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-string">&quot;abcdef&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>);      <span class="hljs-comment">// bcd</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">strpos</span>(<span class="hljs-string">&quot;Hola PHP&quot;</span>, <span class="hljs-string">&quot;PHP&quot;</span>);    <span class="hljs-comment">// 5</span>
+</div></code></pre>
+<p><strong>Ojo:</strong> <code>strpos</code> devuelve <code>0</code> si encuentra el texto al principio; por eso se compara con <code>!== false</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">strpos</span>(<span class="hljs-string">&quot;PHP es útil&quot;</span>, <span class="hljs-string">&quot;PHP&quot;</span>) !== <span class="hljs-literal">false</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Encontrado&quot;</span>;
+}
+</div></code></pre>
+<p><strong>Separar y unir:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-variable">$partes</span> = <span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&quot;,&quot;</span>, <span class="hljs-string">&quot;rojo,verde,azul&quot;</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">implode</span>(<span class="hljs-string">&quot; - &quot;</span>, <span class="hljs-variable">$partes</span>); <span class="hljs-comment">// rojo - verde - azul</span>
+</div></code></pre>
+<p><strong>Comparar textos:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-title function_ invoke__">strcmp</span>(<span class="hljs-string">&quot;ana&quot;</span>, <span class="hljs-string">&quot;ana&quot;</span>); <span class="hljs-comment">// 0 si son iguales</span>
+</div></code></pre>
+<h3 id="62-fechas-y-horas">6.2 Fechas y horas</h3>
+<pre class="hljs"><code><div><span class="hljs-title function_ invoke__">date_default_timezone_set</span>(<span class="hljs-string">&quot;Europe/Madrid&quot;</span>);
+
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&quot;d/m/Y&quot;</span>);     <span class="hljs-comment">// día/mes/año actual</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&quot;H:i:s&quot;</span>);     <span class="hljs-comment">// hora actual</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">time</span>();            <span class="hljs-comment">// timestamp actual</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&quot;d/m/Y&quot;</span>, <span class="hljs-title function_ invoke__">strtotime</span>(<span class="hljs-string">&quot;+7 days&quot;</span>)); <span class="hljs-comment">// dentro de 7 días</span>
+</div></code></pre>
+<p><strong>Caso:</strong> calcular días aproximados entre fechas:</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$inicio</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DateTime</span>(<span class="hljs-string">&quot;2026-11-01&quot;</span>);
+<span class="hljs-variable">$fin</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DateTime</span>(<span class="hljs-string">&quot;2026-11-17&quot;</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$inicio</span>-&gt;<span class="hljs-title function_ invoke__">diff</span>(<span class="hljs-variable">$fin</span>)-&gt;days; <span class="hljs-comment">// 16</span>
+</div></code></pre>
+<hr>
+<h2 id="7-formularios">7. Formularios</h2>
+<h3 id="71-post-enviar-y-recibir-datos">7.1 POST: enviar y recibir datos</h3>
+<p><strong><code>formulario.html</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;procesar.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Nombre: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;nombre&quot;</span> <span class="hljs-attr">required</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Enviar<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</div></code></pre>
+<p><strong><code>procesar.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-variable">$nombre</span> = <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;nombre&quot;</span>] ?? <span class="hljs-string">&quot;&quot;</span>);
+
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$nombre</span> === <span class="hljs-string">&quot;&quot;</span>) {
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;Debes indicar un nombre&quot;</span>);
+}
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Hola, &quot;</span> . <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$nombre</span>, ENT_QUOTES, <span class="hljs-string">&quot;UTF-8&quot;</span>);
+</div></code></pre>
+<p><strong>Claves:</strong> <code>method=&quot;post&quot;</code> → <code>$_POST</code>; <code>name=&quot;nombre&quot;</code> → clave del array; <code>action</code> → archivo receptor.</p>
+<h3 id="72-get-parámetros-en-la-url">7.2 GET: parámetros en la URL</h3>
+<p>URL de ejemplo: <code>producto.php?id=12</code></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-variable">$id</span> = <span class="hljs-title function_ invoke__">filter_input</span>(INPUT_GET, <span class="hljs-string">&quot;id&quot;</span>, FILTER_VALIDATE_INT);
+
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$id</span> === <span class="hljs-literal">false</span> || <span class="hljs-variable">$id</span> === <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;ID no válido&quot;</span>);
+}
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Producto número &quot;</span> . <span class="hljs-variable">$id</span>;
+</div></code></pre>
+<p><strong>Generar enlace:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;producto.php?id=12&quot;</span>&gt;</span>Ver producto<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parámetros visibles en la URL</td>
+<td>Datos enviados en el cuerpo de la petición</td>
+</tr>
+<tr>
+<td>Útil para filtros, búsquedas, identificadores</td>
+<td>Útil para formularios que crean o modifican datos</td>
+</tr>
+<tr>
+<td><code>$_GET[&quot;campo&quot;]</code></td>
+<td><code>$_POST[&quot;campo&quot;]</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>$_REQUEST</code> puede reunir entradas de distintos orígenes, pero <strong>es más claro usar <code>$_GET</code> o <code>$_POST</code> explícitamente</strong>.</p>
+<h3 id="73-formulario-que-se-procesa-a-sí-mismo">7.3 Formulario que se procesa a sí mismo</h3>
+<p><strong><code>saludo.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-variable">$mensaje</span> = <span class="hljs-string">&quot;&quot;</span>;
+
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&quot;REQUEST_METHOD&quot;</span>] === <span class="hljs-string">&quot;POST&quot;</span>) {
+    <span class="hljs-variable">$nombre</span> = <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;nombre&quot;</span>] ?? <span class="hljs-string">&quot;&quot;</span>);
+    <span class="hljs-variable">$mensaje</span> = <span class="hljs-variable">$nombre</span> !== <span class="hljs-string">&quot;&quot;</span> ? <span class="hljs-string">&quot;Hola, <span class="hljs-subst">$nombre</span>&quot;</span> : <span class="hljs-string">&quot;Falta el nombre&quot;</span>;
+}
+<span class="hljs-meta">?&gt;</span>
+&lt;form method=<span class="hljs-string">&quot;post&quot;</span>&gt;
+    &lt;input name=<span class="hljs-string">&quot;nombre&quot;</span> required&gt;
+    &lt;button&gt;Saludar&lt;/button&gt;
+&lt;/form&gt;
+&lt;p&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$mensaje</span>, ENT_QUOTES, <span class="hljs-string">&quot;UTF-8&quot;</span>) <span class="hljs-meta">?&gt;</span>&lt;/p&gt;
+</div></code></pre>
+<h3 id="74-varios-valores-namecolores">7.4 Varios valores: <code>name=&quot;colores[]&quot;</code></h3>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;colores.php&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;colores[]&quot;</span> <span class="hljs-attr">multiple</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;rojo&quot;</span>&gt;</span>Rojo<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;azul&quot;</span>&gt;</span>Azul<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;verde&quot;</span>&gt;</span>Verde<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Enviar<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</div></code></pre>
+<p><strong><code>colores.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-variable">$colores</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;colores&quot;</span>] ?? [];
+
+<span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">is_array</span>(<span class="hljs-variable">$colores</span>)) {
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;Datos inválidos&quot;</span>);
+}
+
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$colores</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$color</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$color</span>)) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$color</span>) . <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+    }
+}
+</div></code></pre>
+<p>También sirve para casillas de verificación con el mismo nombre terminado en <code>[]</code>.</p>
+<h3 id="75-validación">7.5 Validación</h3>
+<p><strong>Caso:</strong> comprobar email y edad.</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$email</span> = <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;email&quot;</span>] ?? <span class="hljs-string">&quot;&quot;</span>);
+<span class="hljs-variable">$edad</span> = <span class="hljs-title function_ invoke__">filter_input</span>(INPUT_POST, <span class="hljs-string">&quot;edad&quot;</span>, FILTER_VALIDATE_INT);
+
+<span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">filter_var</span>(<span class="hljs-variable">$email</span>, FILTER_VALIDATE_EMAIL)) {
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;Email incorrecto&quot;</span>);
+}
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$edad</span> === <span class="hljs-literal">false</span> || <span class="hljs-variable">$edad</span> === <span class="hljs-literal">null</span> || <span class="hljs-variable">$edad</span> &lt; <span class="hljs-number">18</span>) {
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;Debes ser mayor de edad&quot;</span>);
+}
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Datos válidos&quot;</span>;
+</div></code></pre>
+<p><strong>Regla práctica:</strong> valida siempre en PHP, aunque tengas <code>required</code>, <code>type=&quot;email&quot;</code> o <code>min</code> en HTML.</p>
+<h3 id="76-redirigir">7.6 Redirigir</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: gracias.php&quot;</span>);
+<span class="hljs-keyword">exit</span>;
+</div></code></pre>
+<p>Debe ejecutarse <strong>antes de imprimir HTML o texto</strong>.</p>
+<h3 id="77-subir-archivos">7.7 Subir archivos</h3>
+<p><strong>Formulario:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;subir.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">&quot;multipart/form-data&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;documento&quot;</span> <span class="hljs-attr">required</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Subir<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</div></code></pre>
+<p><strong><code>subir.php</code> (ejemplo limitado a PDF):</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&quot;documento&quot;</span>]) ||
+    <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&quot;documento&quot;</span>][<span class="hljs-string">&quot;error&quot;</span>] !== UPLOAD_ERR_OK) {
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;Error al subir&quot;</span>);
+}
+
+<span class="hljs-variable">$archivo</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&quot;documento&quot;</span>];
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$archivo</span>[<span class="hljs-string">&quot;size&quot;</span>] &gt; <span class="hljs-number">2</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>) {
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;Máximo 2 MB&quot;</span>);
+}
+
+<span class="hljs-variable">$mime</span> = (<span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">finfo</span>(FILEINFO_MIME_TYPE))-&gt;<span class="hljs-title function_ invoke__">file</span>(<span class="hljs-variable">$archivo</span>[<span class="hljs-string">&quot;tmp_name&quot;</span>]);
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$mime</span> !== <span class="hljs-string">&quot;application/pdf&quot;</span>) {
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;Solo se admiten PDF&quot;</span>);
+}
+
+<span class="hljs-variable">$destino</span> = <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&quot;/uploads/&quot;</span> . <span class="hljs-title function_ invoke__">bin2hex</span>(<span class="hljs-title function_ invoke__">random_bytes</span>(<span class="hljs-number">12</span>)) . <span class="hljs-string">&quot;.pdf&quot;</span>;
+<span class="hljs-comment">// Crea previamente la carpeta uploads con permisos adecuados.</span>
+<span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$archivo</span>[<span class="hljs-string">&quot;tmp_name&quot;</span>], <span class="hljs-variable">$destino</span>)) {
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;No se pudo guardar&quot;</span>);
+}
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Archivo recibido&quot;</span>;
+</div></code></pre>
+<p><strong>Importante:</strong> no confíes en el nombre o la extensión que envía el usuario. En aplicaciones reales, almacena los archivos fuera del directorio público o restringe su acceso.</p>
+<hr>
+<h2 id="8-cookies-y-sesiones">8. Cookies y sesiones</h2>
+<p><strong>Diferencia rápida:</strong> cookie = dato guardado en el navegador; sesión = datos asociados al usuario en el servidor. PHP normalmente usa una cookie para identificar la sesión.</p>
+<h3 id="81-crear-y-leer-una-cookie">8.1 Crear y leer una cookie</h3>
+<p><strong>Caso:</strong> recordar el tema visual durante una hora.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">setcookie</span>(<span class="hljs-string">&quot;tema&quot;</span>, <span class="hljs-string">&quot;oscuro&quot;</span>, [
+    <span class="hljs-string">&quot;expires&quot;</span> =&gt; <span class="hljs-title function_ invoke__">time</span>() + <span class="hljs-number">3600</span>,
+    <span class="hljs-string">&quot;path&quot;</span> =&gt; <span class="hljs-string">&quot;/&quot;</span>,
+    <span class="hljs-string">&quot;httponly&quot;</span> =&gt; <span class="hljs-literal">true</span>,
+    <span class="hljs-string">&quot;samesite&quot;</span> =&gt; <span class="hljs-string">&quot;Lax&quot;</span>
+]);
+</div></code></pre>
+<p>En <strong>la siguiente petición</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$tema</span> = <span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">&quot;tema&quot;</span>] ?? <span class="hljs-string">&quot;claro&quot;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Tema: &quot;</span> . <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$tema</span>);
+</div></code></pre>
+<p><code>setcookie()</code> debe ejecutarse antes de enviar HTML. No actualiza automáticamente <code>$_COOKIE</code> en la petición actual.</p>
+<h3 id="82-borrar-una-cookie">8.2 Borrar una cookie</h3>
+<pre class="hljs"><code><div><span class="hljs-title function_ invoke__">setcookie</span>(<span class="hljs-string">&quot;tema&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, [
+    <span class="hljs-string">&quot;expires&quot;</span> =&gt; <span class="hljs-title function_ invoke__">time</span>() - <span class="hljs-number">3600</span>,
+    <span class="hljs-string">&quot;path&quot;</span> =&gt; <span class="hljs-string">&quot;/&quot;</span>
+]);
+</div></code></pre>
+<p>Para borrarla, usa la misma ruta (y dominio, si se estableció).</p>
+<h3 id="83-contador-de-visitas-con-cookie">8.3 Contador de visitas con cookie</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-variable">$visitas</span> = (<span class="hljs-keyword">int</span>) (<span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">&quot;visitas&quot;</span>] ?? <span class="hljs-number">0</span>);
+<span class="hljs-variable">$visitas</span>++;
+
+<span class="hljs-title function_ invoke__">setcookie</span>(<span class="hljs-string">&quot;visitas&quot;</span>, (<span class="hljs-keyword">string</span>) <span class="hljs-variable">$visitas</span>, <span class="hljs-title function_ invoke__">time</span>() + <span class="hljs-number">86400</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Visitas registradas en este navegador: <span class="hljs-subst">$visitas</span>&quot;</span>;
+</div></code></pre>
+<p>Es un contador orientativo: el usuario puede borrar o modificar sus cookies.</p>
+<h3 id="84-iniciar-sesión-y-guardar-datos">8.4 Iniciar sesión y guardar datos</h3>
+<p><strong><code>entrar.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">session_start</span>(); <span class="hljs-comment">// antes de HTML</span>
+
+<span class="hljs-comment">// Ejemplo didáctico: suponemos que el usuario YA ha sido validado.</span>
+<span class="hljs-title function_ invoke__">session_regenerate_id</span>(<span class="hljs-literal">true</span>);
+<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;usuario&quot;</span>] = <span class="hljs-string">&quot;Ana&quot;</span>;
+
+<span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: privada.php&quot;</span>);
+<span class="hljs-keyword">exit</span>;
+</div></code></pre>
+<p><strong><code>privada.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">session_start</span>();
+
+<span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;usuario&quot;</span>])) {
+    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: login.php&quot;</span>);
+    <span class="hljs-keyword">exit</span>;
+}
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Hola, &quot;</span> . <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;usuario&quot;</span>]);
+</div></code></pre>
+<p><strong>No es un login real:</strong> antes de asignar <code>$_SESSION[&quot;usuario&quot;]</code>, habría que verificar credenciales de forma segura.</p>
+<h3 id="85-eliminar-datos-y-cerrar-sesión">8.5 Eliminar datos y cerrar sesión</h3>
+<p><strong><code>salir.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">session_start</span>();
+<span class="hljs-variable">$_SESSION</span> = [];
+<span class="hljs-title function_ invoke__">session_destroy</span>();
+<span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: login.php&quot;</span>);
+<span class="hljs-keyword">exit</span>;
+</div></code></pre>
+<p>Para cerrar sesión completamente también se debe invalidar la cookie de sesión con sus parámetros adecuados.</p>
+<p><strong>Cuándo usar cada una:</strong></p>
+<ul>
+<li><strong>Cookie:</strong> preferencias no sensibles, como idioma o tema.</li>
+<li><strong>Sesión:</strong> usuario autenticado, carrito o datos temporales del servidor.</li>
+<li>Nunca guardes contraseñas en cookies.</li>
+</ul>
+<hr>
+<h2 id="9-poo-clases-y-objetos">9. POO: clases y objetos</h2>
+<h3 id="91-clase-propiedades-constructor-y-métodos">9.1 Clase, propiedades, constructor y métodos</h3>
+<p><strong>Caso:</strong> representar un producto.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producto</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$nombre</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$precio</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$nombre</span>, <span class="hljs-keyword">float</span> <span class="hljs-variable">$precio</span></span>) </span>{
+        <span class="hljs-variable language_">$this</span>-&gt;nombre = <span class="hljs-variable">$nombre</span>;
+        <span class="hljs-variable language_">$this</span>-&gt;precio = <span class="hljs-variable">$precio</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mostrar</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;nombre . <span class="hljs-string">&quot;: &quot;</span> . <span class="hljs-variable language_">$this</span>-&gt;precio . <span class="hljs-string">&quot; €&quot;</span>;
+    }
+}
+
+<span class="hljs-variable">$producto</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Producto</span>(<span class="hljs-string">&quot;Teclado&quot;</span>, <span class="hljs-number">29.99</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$producto</span>-&gt;<span class="hljs-title function_ invoke__">mostrar</span>();
+</div></code></pre>
+<ul>
+<li><code>class</code> define la plantilla.</li>
+<li><code>new</code> crea el objeto.</li>
+<li><code>__construct()</code> se ejecuta al crear el objeto.</li>
+<li><code>$this-&gt;</code> accede a propiedades/métodos del objeto actual.</li>
+<li><code>-&gt;</code> accede a métodos/propiedades desde un objeto.</li>
+</ul>
+<h3 id="92-visibilidad-y-encapsulación">9.2 Visibilidad y encapsulación</h3>
+<table>
+<thead>
+<tr>
+<th>Modificador</th>
+<th>Acceso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public</code></td>
+<td>Desde cualquier parte</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>Desde la clase y clases hijas</td>
+</tr>
+<tr>
+<td><code>private</code></td>
+<td>Solo desde la propia clase</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Getter y setter:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cuenta</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$saldo</span> = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSaldo</span>(<span class="hljs-params"></span>): <span class="hljs-title">float</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;saldo;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ingresar</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-variable">$cantidad</span></span>): <span class="hljs-title">void</span> </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$cantidad</span> &lt;= <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">InvalidArgumentException</span>(<span class="hljs-string">&quot;Cantidad inválida&quot;</span>);
+        }
+        <span class="hljs-variable language_">$this</span>-&gt;saldo += <span class="hljs-variable">$cantidad</span>;
+    }
+}
+
+<span class="hljs-variable">$cuenta</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cuenta</span>();
+<span class="hljs-variable">$cuenta</span>-&gt;<span class="hljs-title function_ invoke__">ingresar</span>(<span class="hljs-number">50</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$cuenta</span>-&gt;<span class="hljs-title function_ invoke__">getSaldo</span>(); <span class="hljs-comment">// 50</span>
+</div></code></pre>
+<p>En lugar de permitir <code>$cuenta-&gt;saldo = -100</code>, se controla el cambio con métodos.</p>
+<h3 id="93-getters-y-setters-mágicos-__get-y-__set">9.3 Getters y setters mágicos: <code>__get</code> y <code>__set</code></h3>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Alumno</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$nombre</span> = <span class="hljs-string">&quot;&quot;</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__get</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$propiedad</span></span>): <span class="hljs-title">mixed</span> </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$propiedad</span> === <span class="hljs-string">&quot;nombre&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;nombre;
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Exception</span>(<span class="hljs-string">&quot;Propiedad desconocida&quot;</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__set</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$propiedad</span>, <span class="hljs-keyword">mixed</span> <span class="hljs-variable">$valor</span></span>): <span class="hljs-title">void</span> </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$propiedad</span> !== <span class="hljs-string">&quot;nombre&quot;</span> || !<span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$valor</span>)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">InvalidArgumentException</span>(<span class="hljs-string">&quot;Dato inválido&quot;</span>);
+        }
+        <span class="hljs-variable language_">$this</span>-&gt;nombre = <span class="hljs-variable">$valor</span>;
+    }
+}
+
+<span class="hljs-variable">$a</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Alumno</span>();
+<span class="hljs-variable">$a</span>-&gt;nombre = <span class="hljs-string">&quot;Mar&quot;</span>; <span class="hljs-comment">// llama a __set</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$a</span>-&gt;nombre;    <span class="hljs-comment">// llama a __get</span>
+</div></code></pre>
+<p><strong>Preferencia práctica:</strong> para casos sencillos, suele ser más claro definir <code>getNombre()</code> y <code>setNombre()</code> explícitos.</p>
+<hr>
+<h2 id="10-poo-herencia-métodos-mágicos-y-namespaces">10. POO: herencia, métodos mágicos y namespaces</h2>
+<h3 id="101-herencia-con-extends-y-parent">10.1 Herencia con <code>extends</code> y <code>parent</code></h3>
+<p><strong>Caso:</strong> distintos tipos de empleado.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Empleado</span> </span>{
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$nombre</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$nombre</span></span>) </span>{
+        <span class="hljs-variable language_">$this</span>-&gt;nombre = <span class="hljs-variable">$nombre</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">descripcion</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Empleado: &quot;</span> . <span class="hljs-variable language_">$this</span>-&gt;nombre;
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Programador</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Empleado</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$lenguaje</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$nombre</span>, <span class="hljs-keyword">string</span> <span class="hljs-variable">$lenguaje</span></span>) </span>{
+        <span class="hljs-built_in">parent</span>::<span class="hljs-title function_ invoke__">__construct</span>(<span class="hljs-variable">$nombre</span>);
+        <span class="hljs-variable language_">$this</span>-&gt;lenguaje = <span class="hljs-variable">$lenguaje</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">descripcion</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">parent</span>::<span class="hljs-title function_ invoke__">descripcion</span>() . <span class="hljs-string">&quot; | &quot;</span> . <span class="hljs-variable language_">$this</span>-&gt;lenguaje;
+    }
+}
+
+<span class="hljs-variable">$p</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Programador</span>(<span class="hljs-string">&quot;Eva&quot;</span>, <span class="hljs-string">&quot;PHP&quot;</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$p</span>-&gt;<span class="hljs-title function_ invoke__">descripcion</span>(); <span class="hljs-comment">// Empleado: Eva | PHP</span>
+</div></code></pre>
+<ul>
+<li><code>extends</code> hereda.</li>
+<li><code>parent::__construct(...)</code> llama al constructor padre.</li>
+<li><code>parent::metodo()</code> llama a un método del padre.</li>
+<li>Redefinir un método en la hija permite especializar su comportamiento.</li>
+</ul>
+<h3 id="102-convertir-objeto-a-texto-__tostring">10.2 Convertir objeto a texto: <code>__toString</code></h3>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Libro</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$titulo</span></span>) </span>{}
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;titulo;
+    }
+}
+
+<span class="hljs-keyword">echo</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Libro</span>(<span class="hljs-string">&quot;Aprender PHP&quot;</span>); <span class="hljs-comment">// Aprender PHP</span>
+</div></code></pre>
+<h3 id="103-otros-métodos-mágicos">10.3 Otros métodos mágicos</h3>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Cuándo se ejecuta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__construct()</code></td>
+<td>Al crear un objeto</td>
+</tr>
+<tr>
+<td><code>__destruct()</code></td>
+<td>Al destruirse el objeto</td>
+</tr>
+<tr>
+<td><code>__get($nombre)</code></td>
+<td>Al leer una propiedad inaccesible o inexistente</td>
+</tr>
+<tr>
+<td><code>__set($nombre, $valor)</code></td>
+<td>Al escribir una propiedad inaccesible o inexistente</td>
+</tr>
+<tr>
+<td><code>__toString()</code></td>
+<td>Al convertir un objeto a cadena</td>
+</tr>
+<tr>
+<td><code>__call($nombre, $args)</code></td>
+<td>Al llamar a un método inaccesible o inexistente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="104-espacios-de-nombres-namespace-y-use">10.4 Espacios de nombres (<code>namespace</code> y <code>use</code>)</h3>
+<p><strong><code>Modelos/Producto.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>\<span class="hljs-title class_">Modelos</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producto</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">saludar</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Soy un producto&quot;</span>;
+    }
+}
+</div></code></pre>
+<p><strong><code>index.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&quot;/Modelos/Producto.php&quot;</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Modelos</span>\<span class="hljs-title">Producto</span>;
+
+<span class="hljs-variable">$p</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Producto</span>();
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$p</span>-&gt;<span class="hljs-title function_ invoke__">saludar</span>();
+</div></code></pre>
+<p><code>namespace</code> evita conflictos entre clases que se llaman igual. <code>use</code> permite referenciarlas con un nombre más corto.</p>
+<h3 id="105-excepción-personalizada">10.5 Excepción personalizada</h3>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SaldoInsuficienteException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Exception</span> </span>{}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">retirar</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-variable">$saldo</span>, <span class="hljs-keyword">float</span> <span class="hljs-variable">$cantidad</span></span>): <span class="hljs-title">float</span> </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$cantidad</span> &gt; <span class="hljs-variable">$saldo</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SaldoInsuficienteException</span>(<span class="hljs-string">&quot;No hay saldo suficiente&quot;</span>);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$saldo</span> - <span class="hljs-variable">$cantidad</span>;
+}
+
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">retirar</span>(<span class="hljs-number">20</span>, <span class="hljs-number">30</span>);
+} <span class="hljs-keyword">catch</span> (SaldoInsuficienteException <span class="hljs-variable">$e</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$e</span>-&gt;<span class="hljs-title function_ invoke__">getMessage</span>();
+}
+</div></code></pre>
+<hr>
+<h2 id="11-miniaplicaciones-prácticas">11. Miniaplicaciones prácticas</h2>
+<h3 id="111-formulario-de-notas--función--array">11.1 Formulario de notas + función + array</h3>
+<p><strong>Archivo único <code>notas.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resultado</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-variable">$nota</span></span>): <span class="hljs-title">string</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$nota</span> &gt;= <span class="hljs-number">5</span> ? <span class="hljs-string">&quot;Aprobado&quot;</span> : <span class="hljs-string">&quot;Suspenso&quot;</span>;
+}
+
+<span class="hljs-variable">$mensaje</span> = <span class="hljs-string">&quot;&quot;</span>;
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&quot;REQUEST_METHOD&quot;</span>] === <span class="hljs-string">&quot;POST&quot;</span>) {
+    <span class="hljs-variable">$nota</span> = <span class="hljs-title function_ invoke__">filter_input</span>(INPUT_POST, <span class="hljs-string">&quot;nota&quot;</span>, FILTER_VALIDATE_FLOAT);
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$nota</span> === <span class="hljs-literal">false</span> || <span class="hljs-variable">$nota</span> === <span class="hljs-literal">null</span> || <span class="hljs-variable">$nota</span> &lt; <span class="hljs-number">0</span> || <span class="hljs-variable">$nota</span> &gt; <span class="hljs-number">10</span>) {
+        <span class="hljs-variable">$mensaje</span> = <span class="hljs-string">&quot;Nota inválida&quot;</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable">$mensaje</span> = <span class="hljs-string">&quot;Resultado: &quot;</span> . <span class="hljs-title function_ invoke__">resultado</span>(<span class="hljs-variable">$nota</span>);
+    }
+}
+<span class="hljs-meta">?&gt;</span>
+&lt;form method=<span class="hljs-string">&quot;post&quot;</span>&gt;
+    &lt;label&gt;<span class="hljs-title function_ invoke__">Nota</span> (<span class="hljs-number">0</span>-<span class="hljs-number">10</span>):
+        &lt;input type=<span class="hljs-string">&quot;number&quot;</span> name=<span class="hljs-string">&quot;nota&quot;</span> min=<span class="hljs-string">&quot;0&quot;</span> max=<span class="hljs-string">&quot;10&quot;</span> step=<span class="hljs-string">&quot;0.1&quot;</span> required&gt;
+    &lt;/label&gt;
+    &lt;button&gt;Comprobar&lt;/button&gt;
+&lt;/form&gt;
+&lt;p&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$mensaje</span>) <span class="hljs-meta">?&gt;</span>&lt;/p&gt;
+</div></code></pre>
+<p><strong>Qué practica:</strong> POST, validación, <code>if</code>, función con <code>return</code>, mezcla de HTML y PHP.</p>
+<h3 id="112-carrito-sencillo-con-sesiones">11.2 Carrito sencillo con sesiones</h3>
+<p><strong><code>carrito.php</code>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">session_start</span>();
+
+<span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;carrito&quot;</span>])) {
+    <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;carrito&quot;</span>] = [];
+}
+
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&quot;REQUEST_METHOD&quot;</span>] === <span class="hljs-string">&quot;POST&quot;</span>) {
+    <span class="hljs-variable">$producto</span> = <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;producto&quot;</span>] ?? <span class="hljs-string">&quot;&quot;</span>);
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$producto</span> !== <span class="hljs-string">&quot;&quot;</span>) {
+        <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;carrito&quot;</span>][] = <span class="hljs-variable">$producto</span>;
+    }
+
+    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: carrito.php&quot;</span>); <span class="hljs-comment">// evita reenviar POST al recargar</span>
+    <span class="hljs-keyword">exit</span>;
+}
+<span class="hljs-meta">?&gt;</span>
+&lt;h1&gt;Carrito&lt;/h1&gt;
+&lt;form method=<span class="hljs-string">&quot;post&quot;</span>&gt;
+    &lt;input name=<span class="hljs-string">&quot;producto&quot;</span> placeholder=<span class="hljs-string">&quot;Nombre del producto&quot;</span> required&gt;
+    &lt;button&gt;Añadir&lt;/button&gt;
+&lt;/form&gt;
+&lt;ul&gt;
+<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;carrito&quot;</span>] <span class="hljs-keyword">as</span> <span class="hljs-variable">$producto</span>): <span class="hljs-meta">?&gt;</span>
+    &lt;li&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$producto</span>, ENT_QUOTES, <span class="hljs-string">&quot;UTF-8&quot;</span>) <span class="hljs-meta">?&gt;</span>&lt;/li&gt;
+<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">endforeach</span>; <span class="hljs-meta">?&gt;</span>
+&lt;/ul&gt;
+</div></code></pre>
+<p><strong>Qué practica:</strong> <code>session_start()</code>, <code>$_SESSION</code>, arrays, formularios, <code>foreach</code> y redirección.</p>
+<h3 id="113-clase--array-de-objetos">11.3 Clase + array de objetos</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Alumno</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$nombre</span>,
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$nota</span>
+    </span>) </span>{}
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">estaAprobado</span>(<span class="hljs-params"></span>): <span class="hljs-title">bool</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;nota &gt;= <span class="hljs-number">5</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNombre</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;nombre;
+    }
+}
+
+<span class="hljs-variable">$alumnos</span> = [
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">Alumno</span>(<span class="hljs-string">&quot;Ana&quot;</span>, <span class="hljs-number">8</span>),
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">Alumno</span>(<span class="hljs-string">&quot;Luis&quot;</span>, <span class="hljs-number">4</span>),
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">Alumno</span>(<span class="hljs-string">&quot;Eva&quot;</span>, <span class="hljs-number">6</span>)
+];
+
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$alumnos</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$alumno</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$alumno</span>-&gt;<span class="hljs-title function_ invoke__">getNombre</span>()) . <span class="hljs-string">&quot;: &quot;</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$alumno</span>-&gt;<span class="hljs-title function_ invoke__">estaAprobado</span>() ? <span class="hljs-string">&quot;Aprobado&quot;</span> : <span class="hljs-string">&quot;Suspenso&quot;</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+}
+</div></code></pre>
+<p><strong>Qué practica:</strong> constructor, propiedades privadas, métodos, arrays de objetos y <code>foreach</code>.</p>
+<hr>
+<h2 id="12-chuleta-rápida-y-errores-típicos">12. Chuleta rápida y errores típicos</h2>
+<h3 id="qué-usar-según-el-ejercicio">Qué usar según el ejercicio</h3>
+<table>
+<thead>
+<tr>
+<th>Si necesitas…</th>
+<th>Usa…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mostrar algo</td>
+<td><code>echo</code>, <code>&lt;?= ... ?&gt;</code></td>
+</tr>
+<tr>
+<td>Tomar decisiones</td>
+<td><code>if / elseif / else</code>, <code>switch</code></td>
+</tr>
+<tr>
+<td>Repetir N veces</td>
+<td><code>for</code></td>
+</tr>
+<tr>
+<td>Repetir mientras se cumpla algo</td>
+<td><code>while</code></td>
+</tr>
+<tr>
+<td>Recorrer una lista</td>
+<td><code>foreach</code></td>
+</tr>
+<tr>
+<td>Guardar varios datos</td>
+<td>Array <code>[]</code></td>
+</tr>
+<tr>
+<td>Reutilizar lógica</td>
+<td><code>function</code> y <code>return</code></td>
+</tr>
+<tr>
+<td>Reutilizar código de otro archivo</td>
+<td><code>require_once</code></td>
+</tr>
+<tr>
+<td>Recibir formulario</td>
+<td><code>$_POST</code>, <code>$_GET</code></td>
+</tr>
+<tr>
+<td>Validar una entrada</td>
+<td><code>filter_var</code>, <code>filter_input</code>, <code>isset</code>, <code>empty</code></td>
+</tr>
+<tr>
+<td>Enviar a otra página</td>
+<td><code>header(&quot;Location: ...&quot;); exit;</code></td>
+</tr>
+<tr>
+<td>Recordar una preferencia</td>
+<td><code>setcookie</code>, <code>$_COOKIE</code></td>
+</tr>
+<tr>
+<td>Mantener datos entre páginas</td>
+<td><code>session_start</code>, <code>$_SESSION</code></td>
+</tr>
+<tr>
+<td>Modelar entidades con datos y acciones</td>
+<td><code>class</code>, <code>new</code>, <code>$this-&gt;</code></td>
+</tr>
+<tr>
+<td>Especializar una clase</td>
+<td><code>extends</code>, <code>parent::</code></td>
+</tr>
+<tr>
+<td>Gestionar un fallo controlado</td>
+<td><code>throw</code>, <code>try</code>, <code>catch</code></td>
+</tr>
+<tr>
+<td>Guardar/leer texto</td>
+<td><code>file_put_contents</code>, <code>file_get_contents</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="errores-típicos-que-debes-evitar">Errores típicos que debes evitar</h3>
+<ol>
+<li><strong>Olvidar <code>$</code>:</strong> <code>nombre</code> no es <code>$nombre</code>.</li>
+<li><strong>Confundir <code>=</code> con <code>==</code> o <code>===</code>:</strong> asignar no es comparar.</li>
+<li><strong>Usar <code>+</code> para unir cadenas:</strong> en PHP se usa <code>.</code>.</li>
+<li><strong>Olvidar <code>break</code> en <code>switch</code>:</strong> puede entrar en los siguientes casos.</li>
+<li><strong>Acceder a una clave inexistente:</strong> usa <code>$_POST[&quot;campo&quot;] ?? &quot;&quot;</code>.</li>
+<li><strong>Confundir <code>echo</code> con <code>return</code>:</strong> uno muestra y el otro devuelve.</li>
+<li><strong>Olvidar <code>name</code> en un campo HTML:</strong> sin <code>name</code>, no se envía como esperas.</li>
+<li><strong>Usar <code>$_GET</code> para un formulario POST:</strong> deben coincidir método y superglobal.</li>
+<li><strong>Enviar HTML antes de <code>header()</code>, <code>setcookie()</code> o <code>session_start()</code>:</strong> puede producir el error <em>headers already sent</em>.</li>
+<li><strong>No llamar a <code>session_start()</code> en cada script que use <code>$_SESSION</code>.</strong></li>
+<li><strong>Acceder directamente a propiedades <code>private</code>:</strong> usa métodos públicos.</li>
+<li><strong>Imprimir datos del usuario sin escapar:</strong> usa <code>htmlspecialchars(...)</code> al insertarlos en HTML.</li>
+<li><strong>Confiar solo en validación HTML:</strong> valida también en PHP.</li>
+<li><strong>Ocultar errores con <code>@</code>:</strong> gestiona los fallos cuando sea posible.</li>
+</ol>
+<h3 id="plantilla-mínima-para-empezar-un-ejercicio">Plantilla mínima para empezar un ejercicio</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// 1. Recoger / preparar datos</span>
+<span class="hljs-variable">$datos</span> = [<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>];
+
+<span class="hljs-comment">// 2. Procesar</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calcularTotal</span>(<span class="hljs-params"><span class="hljs-keyword">array</span> <span class="hljs-variable">$valores</span></span>): <span class="hljs-title">int</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">array_sum</span>(<span class="hljs-variable">$valores</span>);
+}
+<span class="hljs-variable">$total</span> = <span class="hljs-title function_ invoke__">calcularTotal</span>(<span class="hljs-variable">$datos</span>);
+
+<span class="hljs-comment">// 3. Mostrar</span>
+<span class="hljs-meta">?&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;es&quot;</span>&gt;
+&lt;head&gt;
+    &lt;meta charset=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;
+    &lt;title&gt;Ejercicio PHP&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Resultado&lt;/h1&gt;
+    &lt;p&gt;Total: <span class="hljs-meta">&lt;?=</span> <span class="hljs-variable">$total</span> <span class="hljs-meta">?&gt;</span>&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<hr>
+<p><strong>Nota sobre el alcance:</strong> esta guía reorganiza de forma práctica los temas de los cinco PDF. Algunos ejemplos incorporan pequeñas mejoras de robustez y seguridad (como <code>htmlspecialchars</code>, validación de entradas, <code>require_once</code> y comprobaciones de subida de archivos) para que puedas reutilizarlos con menos errores. No sustituye una referencia completa de PHP.</p>
+
+</body>
+</html>
